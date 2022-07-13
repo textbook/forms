@@ -9,10 +9,10 @@
   },
   "scripts": {
     "build": "react-scripts build",
-    "postbuild": "buildinfo build/build-info.txt",
+    "postbuild": "buildinfo ${BUILD_PATH:-build}/build-info.txt",
     "e2e": "concurrently --kill-others --success first \"npm:e2e:*\"",
-    "pree2e:app": "npm run build",
-    "e2e:app": "serve -p $npm_package_config_e2e_port build/",
+    "pree2e:app": "cross-env BUILD_PATH=$npm_package_config_e2e_path REACT_APP_API=$npm_package_config_e2e_api npm run build",
+    "e2e:app": "serve -p $npm_package_config_e2e_port $npm_package_config_e2e_path",
     "pree2e:run": "wait-on --log --timeout 30000 http-get://localhost:$npm_package_config_e2e_port",
     "e2e:run": "cross-env CYPRESS_BASE_URL=http://localhost:$npm_package_config_e2e_port cypress run",
     "eject": "react-scripts eject",
@@ -27,6 +27,8 @@
   },
   "proxy": "https://cyf-api.qa.codeyourfuture.io",
   "config": {
+    "e2e_api": "http://example.com",
+    "e2e_path": "build-e2e",
     "e2e_port": "4321"
   },
   "eslintConfig": {
@@ -36,7 +38,7 @@
       "react-app/jest"
     ],
     "ignorePatterns": [
-      "build/"
+      "/build*"
     ],
     "rules": {
       "indent": "off",

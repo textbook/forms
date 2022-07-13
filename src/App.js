@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+import * as apiService from "./apiService";
 import formDefinition from "./formDefinition";
 import Form from "./Form";
 
@@ -19,15 +20,11 @@ function App() {
 				return field;
 			}),
 		).then((definition) => setForm(definition));
-	});
+	}, []);
 
 	const submitForm = (event) => {
 		event.preventDefault();
-		fetch("/volunteer", {
-			body: JSON.stringify(data),
-			headers: { "Content-Type": "application/json" },
-			method: "POST",
-		});
+		apiService.postVolunteer(data);
 	};
 
 	if (!form) {

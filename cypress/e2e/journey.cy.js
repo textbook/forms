@@ -1,8 +1,12 @@
 describe("user journey", () => {
 	it("can submit data", () => {
 		cy.visit("/");
-		cy.intercept("GET", "/cities", { fixture: "cities.json" });
-		cy.intercept("POST", "/volunteer").as("createVolunteer");
+		cy.intercept("GET", "http://example.com/cities", {
+			fixture: "cities.json",
+		});
+		cy.intercept("POST", "http://example.com/volunteer", {
+			statusCode: 200,
+		}).as("createVolunteer");
 
 		cy.findByRole("textbox", { name: /first name/i }).type("Jane");
 		cy.findByRole("textbox", { name: /last name/i }).type("Doe");

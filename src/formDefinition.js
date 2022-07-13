@@ -1,4 +1,4 @@
-import * as cityService from "./cityService";
+import * as apiService from "./apiService";
 
 const formDefinition = [
 	{
@@ -12,7 +12,7 @@ const formDefinition = [
 		type: "text",
 	},
 	{
-		choices: () => cityService.getAll(),
+		choices: () => apiService.getCities(),
 		field: "cityName",
 		label: "What Code Your Future city do you want to work with?",
 		type: "select",
