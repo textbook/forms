@@ -1,10 +1,12 @@
+const API = Cypress.env("API_URL") ?? "";
+
 describe("user journey", () => {
 	it("can submit data", () => {
 		cy.visit("/");
-		cy.intercept("GET", "http://example.com/cities", {
+		cy.intercept("GET", `${API}/cities`, {
 			fixture: "cities.json",
 		});
-		cy.intercept("POST", "http://example.com/volunteer", {
+		cy.intercept("POST", `${API}/volunteer`, {
 			statusCode: 200,
 		}).as("createVolunteer");
 
