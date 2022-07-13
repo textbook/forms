@@ -10,16 +10,19 @@
   "scripts": {
     "build": "react-scripts build",
     "postbuild": "buildinfo build/build-info.txt",
-    "e2e": "cross-env PORT=4321 concurrently --kill-others --success first \"npm:e2e:*\"",
+    "e2e": "concurrently --kill-others --success first \"npm:e2e:*\"",
     "pree2e:app": "npm run build",
-    "e2e:app": "serve -p $PORT build/",
-    "pree2e:run": "wait-on --log --timeout 30000 http-get://localhost:$PORT",
-    "e2e:run": "cross-env CYPRESS_BASE_URL=http://localhost:$PORT cypress run",
+    "e2e:app": "serve -p $npm_package_config_e2e_port build/",
+    "pree2e:run": "wait-on --log --timeout 30000 http-get://localhost:$npm_package_config_e2e_port",
+    "e2e:run": "cross-env CYPRESS_BASE_URL=http://localhost:$npm_package_config_e2e_port cypress run",
     "eject": "react-scripts eject",
     "lint": "eslint --max-warnings 0 .",
     "ship": "npm run lint && npm run test -- --watchAll false && npm run e2e",
     "start": "react-scripts start",
     "test": "react-scripts test"
+  },
+  "config": {
+    "e2e_port": "4321"
   },
   "eslintConfig": {
     "extends": [
