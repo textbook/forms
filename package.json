@@ -16,7 +16,11 @@
     "pree2e:run": "wait-on --log --timeout 30000 http-get://localhost:$npm_package_config_e2e_port",
     "e2e:run": "cross-env CYPRESS_BASE_URL=http://localhost:$npm_package_config_e2e_port cypress run",
     "eject": "react-scripts eject",
-    "lint": "eslint --max-warnings 0 .",
+    "lint": "npm run lint:prettier -- --check && npm run lint:eslint",
+    "lint:eslint": "eslint --max-warnings 0 .",
+    "lint:fix": "npm run lint:prettier -- --write && npm run lint:eslint -- --fix",
+    "lint:prettier": "prettier .",
+    "prepare": "husky install",
     "ship": "npm run lint && npm run test -- --watchAll false && npm run e2e",
     "start": "react-scripts start",
     "test": "react-scripts test"
@@ -57,6 +61,9 @@
     "cross-env": "^7.0.3",
     "cypress": "^10.3.0",
     "eslint-config-cypress": "^0.28.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.3",
+    "prettier": "^2.7.1",
     "react-scripts": "5.0.1",
     "serve": "^14.0.0",
     "wait-on": "^6.0.1"
