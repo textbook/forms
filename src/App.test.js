@@ -10,4 +10,9 @@ describe("App component", () => {
 		).toBeInTheDocument();
 		expect(screen.getByRole("button", { name: /submit/i })).toBeInTheDocument();
 	});
+
+	it("requires first name", () => {
+		render(<App />);
+		expect(screen.getByRole("textbox", { name: /first name/i })).toBeRequired();
+	});
 });

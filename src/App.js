@@ -18,6 +18,7 @@ function App() {
 				First Name
 				<input
 					onChange={({ target: { value } }) => setFirstName(value)}
+					required
 					type="text"
 					value={firstName}
 				/>
