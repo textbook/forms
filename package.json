@@ -25,6 +25,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
+  "proxy": "https://cyf-api.qa.codeyourfuture.io",
   "config": {
     "e2e_port": "4321"
   },
@@ -36,7 +37,11 @@
     ],
     "ignorePatterns": [
       "build/"
-    ]
+    ],
+    "rules": {
+      "indent": "off",
+      "operator-linebreak": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -63,6 +68,7 @@
     "eslint-config-cypress": "^0.28.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
+    "msw": "^0.44.0",
     "prettier": "^2.7.1",
     "react-scripts": "5.0.1",
     "serve": "^14.0.0",

@@ -1,0 +1,163 @@
+{
+	"cities": [
+		{
+			"_id": "5c40ba625da199001c70b5fb",
+			"name": "London",
+			"location": "244-254 Cambridge Heath Rd, London E2 9DA",
+			"email": "london@codeyourfuture.io",
+			"slackChannel": "London",
+			"slackChannelId": "GGVV45PJ7",
+			"__v": 0,
+			"updatedAt": "2019-10-31T08:39:10.820Z",
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5c55976d6a3791001cd3a774",
+			"name": "Rome",
+			"location": "Via Marsala, 29H, 00185 Roma RM, Italy",
+			"email": "italy@codeyourfuture.io",
+			"slackChannel": "Italy",
+			"slackChannelId": "GGWCZDG1K",
+			"__v": 0,
+			"updatedAt": "2019-10-31T08:38:28.636Z",
+			"visibleIn": [
+				"APPLICATION_PROCESS_FORM",
+				"VOLUNTEER_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5c7fa02021b123001b68665b",
+			"name": "Glasgow",
+			"email": "scotland@codeyourfuture.io",
+			"slackChannel": "Glasgow",
+			"slackChannelId": "GGWD2H4Q5",
+			"__v": 0,
+			"updatedAt": "2019-10-31T08:39:25.306Z",
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5c8537614b6bc9001c974c53",
+			"name": "Italy",
+			"email": "italy@codeyourfuture.io",
+			"slackChannel": "Italy",
+			"slackChannelId": "GGWCZDG1K",
+			"__v": 0,
+			"updatedAt": "2021-08-05T08:31:09.209Z",
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"DASHBOARD",
+				"EVENT_LIST"
+			]
+		},
+		{
+			"_id": "5cefa482e9d57c001b2a7710",
+			"name": "Manchester",
+			"email": "manchester@codeyourfuture.io",
+			"slackChannel": "manchester-applicants",
+			"slackChannelId": "CK45JGC85",
+			"createdAt": "2019-05-30T09:38:10.576Z",
+			"updatedAt": "2019-10-31T08:38:59.412Z",
+			"__v": 0,
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5cefa655071d210018e3dcce",
+			"name": "Medellín",
+			"email": "colombia@codeyourfuture.io",
+			"slackChannel": "medellin-applicants",
+			"slackChannelId": "CK6BPAG4W",
+			"createdAt": "2019-05-30T09:45:57.950Z",
+			"updatedAt": "2021-08-05T08:29:40.096Z",
+			"__v": 0,
+			"visibleIn": ["DASHBOARD"]
+		},
+		{
+			"_id": "5cefa67c071d210018e3dccf",
+			"name": "Birmingham",
+			"email": "westmidlands@codeyourfuture.io",
+			"slackChannel": "birmingham-applicants",
+			"slackChannelId": "CJSP766DR",
+			"createdAt": "2019-05-30T09:46:36.829Z",
+			"updatedAt": "2020-12-23T12:30:05.435Z",
+			"__v": 0,
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5cefa6e0071d210018e3dcd0",
+			"name": "Other",
+			"email": "applicants@codeyourfuture.io",
+			"slackChannel": "othercities",
+			"slackChannelId": "AAAAA",
+			"createdAt": "2019-05-30T09:48:16.638Z",
+			"updatedAt": "2019-10-31T08:38:41.997Z",
+			"__v": 0,
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5d444706c43ea6001b03106c",
+			"name": "Cape Town",
+			"email": "southafrica@codeyourfuture.io",
+			"slackChannel": "South Africa",
+			"slackChannelId": "CD6TBFHU4",
+			"createdAt": "2019-08-02T14:21:58.149Z",
+			"updatedAt": "2021-08-05T08:31:18.897Z",
+			"__v": 0,
+			"visibleIn": [
+				"APPLICATION_PROCESS_FORM",
+				"VOLUNTEER_FORM",
+				"DASHBOARD",
+				"EVENT_LIST"
+			]
+		},
+		{
+			"_id": "5f775ab7569738001b7c8998",
+			"visibleIn": [],
+			"name": "Gaza",
+			"email": "palestine@codeyourfuture.io",
+			"slackChannel": "#palestine",
+			"slackChannelId": "C01BSH73H5K",
+			"createdAt": "2020-10-02T16:52:07.526Z",
+			"updatedAt": "2021-08-05T07:48:07.543Z",
+			"__v": 0
+		},
+		{
+			"_id": "5f775acf569738001b7c8999",
+			"visibleIn": [],
+			"name": "Hebron",
+			"email": "palestine@codeyourfuture.io",
+			"slackChannel": "#palestine",
+			"slackChannelId": "C01BSH73H5K",
+			"createdAt": "2020-10-02T16:52:31.160Z",
+			"updatedAt": "2021-08-05T07:50:41.192Z",
+			"__v": 0
+		}
+	]
+}

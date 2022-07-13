@@ -1,40 +1,46 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
+
+import formDefinition from "./formDefinition";
+import Form from "./Form";
 
 function App() {
-	const [firstName, setFirstName] = useState("");
-	const [lastName, setLastName] = useState("");
+	const [form, setForm] = useState();
+	const [data, setData] = useState({});
+
+	useEffect(() => {
+		Promise.all(
+			formDefinition.map(async (field) => {
+				if (typeof field.choices === "function") {
+					return {
+						...field,
+						choices: await field.choices(),
+					};
+				}
+				return field;
+			}),
+		).then((definition) => setForm(definition));
+	});
 
 	const submitForm = (event) => {
 		event.preventDefault();
 		fetch("/volunteer", {
-			body: JSON.stringify({ firstName, lastName }),
+			body: JSON.stringify(data),
 			headers: { "Content-Type": "application/json" },
 			method: "POST",
 		});
 	};
 
+	if (!form) {
+		return null;
+	}
+
 	return (
-		<form onSubmit={submitForm}>
-			<label>
-				First Name
-				<input
-					onChange={({ target: { value } }) => setFirstName(value)}
-					required
-					type="text"
-					value={firstName}
-				/>
-			</label>
-			<label>
-				Last Name
-				<input
-					onChange={({ target: { value } }) => setLastName(value)}
-					required
-					type="text"
-					value={lastName}
-				/>
-			</label>
-			<button type="submit">Submit</button>
-		</form>
+		<Form
+			data={data}
+			formDefinition={form}
+			onChange={({ field, value }) => setData({ ...data, [field]: value })}
+			onSubmit={submitForm}
+		/>
 	);
 }
 
