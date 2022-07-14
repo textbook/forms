@@ -1,7 +1,9 @@
-import { Select, Text } from "./inputs";
+import { Email, Select, Text } from "./inputs";
 
 function component(type) {
 	switch (type) {
+		case "email":
+			return Email;
 		case "select":
 			return Select;
 		default:

@@ -14,6 +14,12 @@ const formDefinition = [
 		type: "text",
 	},
 	{
+		field: "email",
+		label: "Email",
+		required: true,
+		type: "email",
+	},
+	{
 		choices: () => apiService.getCities(),
 		field: "cityName",
 		label: "Which Code Your Future location is near to you?",

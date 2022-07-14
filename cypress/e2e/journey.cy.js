@@ -12,6 +12,7 @@ describe("user journey", () => {
 
 		cy.findByRole("textbox", { name: /first name/i }).type("Jane");
 		cy.findByRole("textbox", { name: /last name/i }).type("Doe");
+		cy.findByRole("textbox", { name: /email/i }).type("jane.doe@example.com");
 		cy.findByRole("combobox", { name: /location/i }).select("Glasgow");
 		cy.findByRole("combobox", { name: /hear about/i }).select("Employer");
 		cy.findByRole("textbox", { name: /employer/i }).type("BrewDog");
@@ -20,6 +21,7 @@ describe("user journey", () => {
 		cy.wait("@createVolunteer").then(({ request }) => {
 			expect(request.body).to.deep.equal({
 				cityName: "Glasgow",
+				email: "jane.doe@example.com",
 				employer: "BrewDog",
 				firstName: "Jane",
 				hearAboutCYF: "Employer",

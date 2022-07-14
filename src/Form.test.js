@@ -131,4 +131,27 @@ describe("Form component", () => {
 		expect(screen.getByRole("combobox", { name: "some" })).not.toBeRequired();
 		expect(screen.getByRole("textbox", { name: "other*" })).toBeRequired();
 	});
+
+	it("supports email addresses", () => {
+		render(
+			<Form
+				data={{}}
+				formDefinition={[
+					{
+						field: "email",
+						label: "Email address",
+						required: true,
+						type: "email",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		const textbox = screen.getByRole("textbox", { name: /email/i });
+		expect(textbox).toHaveAttribute("autocomplete", "email");
+		expect(textbox).toHaveAttribute("spellcheck", "false");
+		expect(textbox).toHaveAttribute("type", "email");
+	});
 });
