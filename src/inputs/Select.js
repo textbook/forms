@@ -1,7 +1,8 @@
-function Select({ choices, label, onChange, required, value }) {
+function Select({ choices, description, label, onChange, required, value }) {
 	return (
 		<label>
 			<b>{label}</b>
+			{description && <span>{description}</span>}
 			<select
 				onChange={({ target: { value } }) => onChange(value)}
 				required={required}

@@ -54,6 +54,16 @@ const formDefinition = [
 		required: ({ hearAboutCYF }) => hearAboutCYF === "Employer",
 		type: "text",
 	},
+	{
+		description: [
+			"This will help us get to know you a little better.",
+			"One or two sentences are perfect, thank you.",
+		].join(" "),
+		field: "interestedInCYF",
+		label: "Why do you want to volunteer with Code Your Future?",
+		required: true,
+		type: "textarea",
+	},
 ];
 
 export default formDefinition;

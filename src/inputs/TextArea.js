@@ -1,12 +1,20 @@
-function Text({ description, inputProps, label, onChange, required, value }) {
+function TextArea({
+	description,
+	inputProps,
+	label,
+	onChange,
+	required,
+	value,
+}) {
 	return (
 		<label>
 			<b>{label}</b>
 			{description && <span>{description}</span>}
-			<input
+			<textarea
+				cols={30}
 				onChange={({ target: { value } }) => onChange(value)}
 				required={required}
-				type="text"
+				rows={5}
 				value={value ?? ""}
 				{...inputProps}
 			/>
@@ -14,4 +22,4 @@ function Text({ description, inputProps, label, onChange, required, value }) {
 	);
 }
 
-export default Text;
+export default TextArea;

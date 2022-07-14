@@ -175,4 +175,51 @@ describe("Form component", () => {
 		expect(textbox).toHaveAttribute("autocomplete", "tel");
 		expect(textbox).toHaveAttribute("type", "tel");
 	});
+
+	it("supports descriptions", () => {
+		render(
+			<Form
+				data={{}}
+				formDefinition={[
+					{
+						description: "something that expands on why",
+						type: "text",
+					},
+					{
+						choices: [],
+						description: "something else",
+						type: "select",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		expect(
+			screen.getByLabelText(/something that expands on why/i),
+		).toBeInTheDocument();
+		expect(screen.getByLabelText(/something else/i)).toBeInTheDocument();
+	});
+
+	it("supports textareas", () => {
+		render(
+			<Form
+				data={{}}
+				formDefinition={[
+					{
+						field: "field",
+						label: "label",
+						type: "textarea",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		const textbox = screen.getByRole("textbox", { name: /label/i });
+		expect(textbox).toHaveAttribute("cols", "30");
+		expect(textbox).toHaveAttribute("rows", "5");
+	});
 });

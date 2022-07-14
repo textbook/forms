@@ -17,6 +17,9 @@ describe("user journey", () => {
 		cy.findByRole("textbox", { name: /phone/i }).type("+44 7700 900 987");
 		cy.findByRole("combobox", { name: /hear about/i }).select("Employer");
 		cy.findByRole("textbox", { name: /employer/i }).type("BrewDog");
+		cy.findByRole("textbox", { name: /why do you want to volunteer/i }).type(
+			"I am a helpful person",
+		);
 		cy.findByRole("button", { name: /submit/i }).click();
 
 		cy.wait("@createVolunteer").then(({ request }) => {
@@ -26,6 +29,7 @@ describe("user journey", () => {
 				employer: "BrewDog",
 				firstName: "Jane",
 				hearAboutCYF: "Employer",
+				interestedInCYF: "I am a helpful person",
 				lastName: "Doe",
 				tel: "+44 7700 900 987",
 			});

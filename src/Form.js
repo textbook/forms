@@ -1,4 +1,4 @@
-import { Email, PhoneNumber, Select, Text } from "./inputs";
+import { Email, PhoneNumber, Select, Text, TextArea } from "./inputs";
 
 function component(type) {
 	switch (type) {
@@ -8,6 +8,8 @@ function component(type) {
 			return Select;
 		case "tel":
 			return PhoneNumber;
+		case "textarea":
+			return TextArea;
 		default:
 			return Text;
 	}
@@ -16,18 +18,19 @@ function component(type) {
 function Form({ data, formDefinition, onChange, onSubmit }) {
 	return (
 		<form onSubmit={onSubmit}>
-			{formDefinition.map(({ choices, field, label, required, type }) => {
+			{formDefinition.map(({ field, label, required, type, ...props }) => {
 				const Component = component(type);
-				required = typeof required === "function" ? required(data) : required;
+				const requiredField =
+					typeof required === "function" ? required(data) : !!required;
 
 				return (
 					<Component
-						choices={choices}
 						key={field}
-						label={required ? `${label}*` : label}
+						label={requiredField ? `${label}*` : label}
 						onChange={(value) => onChange({ field, value })}
-						required={required}
+						required={requiredField}
 						value={data[field]}
+						{...props}
 					/>
 				);
 			})}
