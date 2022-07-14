@@ -1,3 +1,4 @@
+import Checkbox from "./Checkbox";
 import Email from "./Email";
 import PhoneNumber from "./PhoneNumber";
 import Select from "./Select";
@@ -6,6 +7,8 @@ import TextArea from "./TextArea";
 
 export default function getInput(type) {
 	switch (type) {
+		case "checkbox":
+			return Checkbox;
 		case "email":
 			return Email;
 		case "select":

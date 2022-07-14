@@ -224,4 +224,24 @@ describe("Form component", () => {
 		expect(textbox).toHaveAttribute("cols", "30");
 		expect(textbox).toHaveAttribute("rows", "5");
 	});
+	it("supports checkboxes", () => {
+		render(
+			<Form
+				data={{}}
+				formDefinition={[
+					{
+						field: "field",
+						label: "some",
+						required: true,
+						type: "checkbox",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		const checkbox = screen.getByRole("checkbox", { name: /some/i });
+		expect(checkbox).toBeRequired();
+	});
 });

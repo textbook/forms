@@ -20,10 +20,12 @@ describe("user journey", () => {
 		cy.findByRole("textbox", { name: /why do you want to volunteer/i }).type(
 			"I am a helpful person",
 		);
+		cy.findByRole("checkbox", { name: /terms of use/i }).check();
 		cy.findByRole("button", { name: /submit/i }).click();
 
 		cy.wait("@createVolunteer").then(({ request }) => {
 			expect(request.body).to.deep.equal({
+				agreeToTOU: true,
 				cityName: "Glasgow",
 				email: "jane.doe@example.com",
 				employer: "BrewDog",

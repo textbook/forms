@@ -64,6 +64,12 @@ const formDefinition = [
 		required: true,
 		type: "textarea",
 	},
+	{
+		field: "agreeToTOU",
+		label: "Yes, I have read and accepted the terms of use and privacy policy",
+		required: true,
+		type: "checkbox",
+	},
 ];
 
 export default formDefinition;
