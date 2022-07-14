@@ -13,12 +13,16 @@ describe("user journey", () => {
 		cy.findByRole("textbox", { name: /first name/i }).type("Jane");
 		cy.findByRole("textbox", { name: /last name/i }).type("Doe");
 		cy.findByRole("combobox", { name: /location/i }).select("Glasgow");
+		cy.findByRole("combobox", { name: /hear about/i }).select("Employer");
+		cy.findByRole("textbox", { name: /employer/i }).type("BrewDog");
 		cy.findByRole("button", { name: /submit/i }).click();
 
 		cy.wait("@createVolunteer").then(({ request }) => {
 			expect(request.body).to.deep.equal({
 				cityName: "Glasgow",
+				employer: "BrewDog",
 				firstName: "Jane",
+				hearAboutCYF: "Employer",
 				lastName: "Doe",
 			});
 		});
