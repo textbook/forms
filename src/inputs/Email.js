@@ -1,16 +1,15 @@
-function Email({ label, onChange, required, value }) {
+import Text from "./Text";
+
+function Email(props) {
 	return (
-		<label>
-			<b>{label}</b>
-			<input
-				autoComplete="email"
-				onChange={({ target: { value } }) => onChange(value)}
-				required={required}
-				spellCheck={false}
-				type="email"
-				value={value ?? ""}
-			/>
-		</label>
+		<Text
+			inputProps={{
+				autoComplete: "email",
+				spellCheck: false,
+				type: "email",
+			}}
+			{...props}
+		/>
 	);
 }
 

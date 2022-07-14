@@ -1,15 +1,14 @@
-function PhoneNumber({ label, onChange, required, value }) {
+import Text from "./Text";
+
+function PhoneNumber(props) {
 	return (
-		<label>
-			<b>{label}</b>
-			<input
-				autoComplete="tel"
-				onChange={({ target: { value } }) => onChange(value)}
-				required={required}
-				type="tel"
-				value={value ?? ""}
-			/>
-		</label>
+		<Text
+			inputProps={{
+				autoComplete: "tel",
+				type: "tel",
+			}}
+			{...props}
+		/>
 	);
 }
 
