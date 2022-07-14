@@ -1,25 +1,10 @@
-import { Email, PhoneNumber, Select, Text, TextArea } from "./inputs";
-
-function component(type) {
-	switch (type) {
-		case "email":
-			return Email;
-		case "select":
-			return Select;
-		case "tel":
-			return PhoneNumber;
-		case "textarea":
-			return TextArea;
-		default:
-			return Text;
-	}
-}
+import getInput from "./inputs";
 
 function Form({ data, formDefinition, onChange, onSubmit }) {
 	return (
 		<form onSubmit={onSubmit}>
 			{formDefinition.map(({ field, label, required, type, ...props }) => {
-				const Component = component(type);
+				const Component = getInput(type);
 				const requiredField =
 					typeof required === "function" ? required(data) : !!required;
 
