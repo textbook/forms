@@ -1,8 +1,8 @@
+import FormControl from "./FormControl";
+
 function Text({ description, inputProps, label, onChange, required, value }) {
 	return (
-		<label>
-			<b>{label}</b>
-			{description && <span>{description}</span>}
+		<FormControl description={description} label={label}>
 			<input
 				onChange={({ target: { value } }) => onChange(value)}
 				required={required}
@@ -10,7 +10,7 @@ function Text({ description, inputProps, label, onChange, required, value }) {
 				value={value ?? ""}
 				{...inputProps}
 			/>
-		</label>
+		</FormControl>
 	);
 }
 

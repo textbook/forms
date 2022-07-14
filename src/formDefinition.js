@@ -66,7 +66,12 @@ const formDefinition = [
 	},
 	{
 		field: "agreeToTOU",
-		label: "Yes, I have read and accepted the terms of use and privacy policy",
+		label: [
+			"Yes, I have read and accepted the",
+			'<a href="https://codeyourfuture.io/terms/">terms of use</a>',
+			"and",
+			'<a href="https://codeyourfuture.io/privacy-policy/">privacy policy</a>',
+		].join(" "),
 		required: true,
 		type: "checkbox",
 	},

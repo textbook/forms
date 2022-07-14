@@ -1,15 +1,15 @@
+import FormControl from "./FormControl";
+
 function Checkbox({ description, label, onChange, required, value }) {
 	return (
-		<label>
-			<b>{label}</b>
-			{description && <span>{description}</span>}
+		<FormControl description={description} label={label}>
 			<input
 				checked={!!value}
 				onChange={() => onChange(!value)}
 				required={required}
 				type="checkbox"
 			/>
-		</label>
+		</FormControl>
 	);
 }
 

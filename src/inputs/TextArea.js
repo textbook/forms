@@ -1,3 +1,5 @@
+import FormControl from "./FormControl";
+
 function TextArea({
 	description,
 	inputProps,
@@ -7,9 +9,7 @@ function TextArea({
 	value,
 }) {
 	return (
-		<label>
-			<b>{label}</b>
-			{description && <span>{description}</span>}
+		<FormControl description={description} label={label}>
 			<textarea
 				cols={30}
 				onChange={({ target: { value } }) => onChange(value)}
@@ -18,7 +18,7 @@ function TextArea({
 				value={value ?? ""}
 				{...inputProps}
 			/>
-		</label>
+		</FormControl>
 	);
 }
 

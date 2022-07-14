@@ -224,6 +224,7 @@ describe("Form component", () => {
 		expect(textbox).toHaveAttribute("cols", "30");
 		expect(textbox).toHaveAttribute("rows", "5");
 	});
+
 	it("supports checkboxes", () => {
 		render(
 			<Form
@@ -243,5 +244,28 @@ describe("Form component", () => {
 
 		const checkbox = screen.getByRole("checkbox", { name: /some/i });
 		expect(checkbox).toBeRequired();
+	});
+
+	it("supports JSX content", () => {
+		render(
+			<Form
+				data={{}}
+				formDefinition={[
+					{
+						field: "field",
+						label: 'Check the <a href="http://example.com">Terms of Use</a>',
+						required: true,
+						type: "checkbox",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		expect(screen.getByRole("link", { name: /terms of use/i })).toHaveAttribute(
+			"href",
+			"http://example.com",
+		);
 	});
 });

@@ -1,8 +1,8 @@
+import FormControl from "./FormControl";
+
 function Select({ choices, description, label, onChange, required, value }) {
 	return (
-		<label>
-			<b>{label}</b>
-			{description && <span>{description}</span>}
+		<FormControl description={description} label={label}>
 			<select
 				onChange={({ target: { value } }) => onChange(value)}
 				required={required}
@@ -17,7 +17,7 @@ function Select({ choices, description, label, onChange, required, value }) {
 					</option>
 				))}
 			</select>
-		</label>
+		</FormControl>
 	);
 }
 
