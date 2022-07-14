@@ -1,10 +1,7 @@
 function Text({ label, onChange, required, value }) {
 	return (
 		<label>
-			<b>
-				{label}
-				{required && "*"}
-			</b>
+			<b>{label}</b>
 			<input
 				onChange={({ target: { value } }) => onChange(value)}
 				required={required}

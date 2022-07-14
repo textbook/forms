@@ -14,15 +14,15 @@ function Form({ data, formDefinition, onChange, onSubmit }) {
 		<form onSubmit={onSubmit}>
 			{formDefinition.map(({ choices, field, label, required, type }) => {
 				const Component = component(type);
+				required = typeof required === "function" ? required(data) : required;
+
 				return (
 					<Component
 						choices={choices}
 						key={field}
-						label={label}
+						label={required ? `${label}*` : label}
 						onChange={(value) => onChange({ field, value })}
-						required={
-							typeof required === "function" ? required(data) : required
-						}
+						required={required}
 						value={data[field]}
 					/>
 				);
