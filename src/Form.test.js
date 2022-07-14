@@ -183,11 +183,13 @@ describe("Form component", () => {
 				formDefinition={[
 					{
 						description: "something that expands on why",
+						field: "some",
 						type: "text",
 					},
 					{
 						choices: [],
 						description: "something else",
+						field: "other",
 						type: "select",
 					},
 				]}
