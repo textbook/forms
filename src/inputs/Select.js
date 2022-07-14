@@ -1,10 +1,13 @@
-function Select({ choices, label, onChange, value }) {
+function Select({ choices, label, onChange, required, value }) {
 	return (
 		<label>
-			<b>{label}*</b>
+			<b>
+				{label}
+				{required && "*"}
+			</b>
 			<select
 				onChange={({ target: { value } }) => onChange(value)}
-				required
+				required={required}
 				value={value ?? ""}
 			>
 				<option disabled value="">

@@ -2,13 +2,13 @@ const API = Cypress.env("API_URL") ?? "";
 
 describe("user journey", () => {
 	it("can submit data", () => {
-		cy.visit("/");
 		cy.intercept("GET", `${API}/cities`, {
 			fixture: "cities.json",
 		});
 		cy.intercept("POST", `${API}/volunteer`, {
 			statusCode: 200,
 		}).as("createVolunteer");
+		cy.visit("/");
 
 		cy.findByRole("textbox", { name: /first name/i }).type("Jane");
 		cy.findByRole("textbox", { name: /last name/i }).type("Doe");
@@ -26,5 +26,31 @@ describe("user journey", () => {
 				lastName: "Doe",
 			});
 		});
+	});
+
+	it("employer is optional if that isn't how they heard about CYF", () => {
+		cy.intercept("GET", `${API}/cities`, {
+			fixture: "cities.json",
+		});
+		cy.visit("/");
+
+		cy.findByRole("textbox", { name: /employer/i }).should(
+			"not.have.attr",
+			"required",
+		);
+
+		cy.findByRole("combobox", { name: /hear about/i }).select("Employer");
+		cy.findByRole("textbox", { name: /employer/i }).should(
+			"have.attr",
+			"required",
+		);
+
+		cy.findByRole("combobox", { name: /hear about/i }).select(
+			"Colleague or friend",
+		);
+		cy.findByRole("textbox", { name: /employer/i }).should(
+			"not.have.attr",
+			"required",
+		);
 	});
 });

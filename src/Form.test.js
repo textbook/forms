@@ -63,6 +63,7 @@ describe("Form component", () => {
 						choices: ["some", "other"],
 						field: "field",
 						label: "label",
+						required: true,
 						type: "select",
 					},
 				]}
@@ -84,5 +85,50 @@ describe("Form component", () => {
 
 		expect(select).toBeRequired();
 		expect(onChange).toHaveBeenCalledWith({ field: "field", value: "other" });
+	});
+
+	it("creates required fields from static data", () => {
+		render(
+			<Form
+				data={{ some: "value" }}
+				formDefinition={[
+					{ field: "some", label: "some", required: true, type: "text" },
+					{ field: "other", label: "other", required: false, type: "text" },
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		expect(screen.getByRole("textbox", { name: "some*" })).toBeRequired();
+		expect(screen.getByRole("textbox", { name: "other" })).not.toBeRequired();
+	});
+
+	it("creates required fields from dynamic data", () => {
+		render(
+			<Form
+				data={{ some: "value" }}
+				formDefinition={[
+					{
+						choices: ["value"],
+						field: "some",
+						label: "some",
+						required: false,
+						type: "select",
+					},
+					{
+						field: "other",
+						label: "other",
+						required: (data) => data.some === "value",
+						type: "text",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		expect(screen.getByRole("combobox", { name: "some" })).not.toBeRequired();
+		expect(screen.getByRole("textbox", { name: "other*" })).toBeRequired();
 	});
 });

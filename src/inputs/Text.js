@@ -1,10 +1,13 @@
-function Text({ label, onChange, value }) {
+function Text({ label, onChange, required, value }) {
 	return (
 		<label>
-			<b>{label}*</b>
+			<b>
+				{label}
+				{required && "*"}
+			</b>
 			<input
 				onChange={({ target: { value } }) => onChange(value)}
-				required
+				required={required}
 				type="text"
 				value={value ?? ""}
 			/>
