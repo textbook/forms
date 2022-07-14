@@ -154,4 +154,25 @@ describe("Form component", () => {
 		expect(textbox).toHaveAttribute("spellcheck", "false");
 		expect(textbox).toHaveAttribute("type", "email");
 	});
+
+	it("supports phone numbers", () => {
+		render(
+			<Form
+				data={{}}
+				formDefinition={[
+					{
+						field: "tel",
+						label: "Phone number",
+						type: "tel",
+					},
+				]}
+				onChange={() => {}}
+				onSubmit={() => {}}
+			/>,
+		);
+
+		const textbox = screen.getByRole("textbox", { name: /phone/i });
+		expect(textbox).toHaveAttribute("autocomplete", "tel");
+		expect(textbox).toHaveAttribute("type", "tel");
+	});
 });

@@ -27,6 +27,12 @@ const formDefinition = [
 		type: "select",
 	},
 	{
+		field: "tel",
+		label: "Phone number",
+		required: true,
+		type: "tel",
+	},
+	{
 		choices: [
 			"Employer",
 			"Search engine",

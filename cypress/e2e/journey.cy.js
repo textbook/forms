@@ -14,6 +14,7 @@ describe("user journey", () => {
 		cy.findByRole("textbox", { name: /last name/i }).type("Doe");
 		cy.findByRole("textbox", { name: /email/i }).type("jane.doe@example.com");
 		cy.findByRole("combobox", { name: /location/i }).select("Glasgow");
+		cy.findByRole("textbox", { name: /phone/i }).type("+44 7700 900 987");
 		cy.findByRole("combobox", { name: /hear about/i }).select("Employer");
 		cy.findByRole("textbox", { name: /employer/i }).type("BrewDog");
 		cy.findByRole("button", { name: /submit/i }).click();
@@ -26,6 +27,7 @@ describe("user journey", () => {
 				firstName: "Jane",
 				hearAboutCYF: "Employer",
 				lastName: "Doe",
+				tel: "+44 7700 900 987",
 			});
 		});
 	});

@@ -1,4 +1,4 @@
-import { Email, Select, Text } from "./inputs";
+import { Email, PhoneNumber, Select, Text } from "./inputs";
 
 function component(type) {
 	switch (type) {
@@ -6,6 +6,8 @@ function component(type) {
 			return Email;
 		case "select":
 			return Select;
+		case "tel":
+			return PhoneNumber;
 		default:
 			return Text;
 	}
