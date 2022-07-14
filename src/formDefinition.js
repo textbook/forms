@@ -14,7 +14,7 @@ const formDefinition = [
 	{
 		choices: () => apiService.getCities(),
 		field: "cityName",
-		label: "What Code Your Future city do you want to work with?",
+		label: "Which Code Your Future location is near to you?",
 		type: "select",
 	},
 ];

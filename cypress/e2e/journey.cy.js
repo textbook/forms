@@ -12,7 +12,7 @@ describe("user journey", () => {
 
 		cy.findByRole("textbox", { name: /first name/i }).type("Jane");
 		cy.findByRole("textbox", { name: /last name/i }).type("Doe");
-		cy.findByRole("combobox", { name: /city/i }).select("Glasgow");
+		cy.findByRole("combobox", { name: /location/i }).select("Glasgow");
 		cy.findByRole("button", { name: /submit/i }).click();
 
 		cy.wait("@createVolunteer").then(({ request }) => {
