@@ -3,11 +3,29 @@ version: 2.1
 orbs:
   cypress: cypress-io/cypress@2.0.0
 
+jobs:
+  test:
+    docker:
+      - image: cimg/node:16.16.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - forms-npm-{{ checksum "package-lock.json" }}
+            - forms-npm
+      - run: npm ci
+      - save_cache:
+          key: fauxauth-npm-{{ checksum "package-lock.json" }}
+          paths:
+            - ~/.npm
+      - run: npm run lint
+      - run: npm run test
+      - run:
+          command: npm run e2e
+          environment:
+            CYPRESS_VIDEO: false
+
 workflows:
   build:
     jobs:
-      - cypress/run:
-          command: npm run e2e:run
-          executor: cypress/base-16
-          start: npm run e2e:app
-          store_artifacts: true
+      - test
