@@ -1,0 +1,13 @@
+version: 2.1
+
+orbs:
+  cypress: cypress-io/cypress@2.0.0
+
+workflows:
+  build:
+    jobs:
+      - cypress/run:
+          command: npm run e2e:run
+          executor: cypress/base-14
+          start: npm run e2e:app
+          store_artifacts: true
