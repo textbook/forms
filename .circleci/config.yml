@@ -8,6 +8,6 @@ workflows:
     jobs:
       - cypress/run:
           command: npm run e2e:run
-          executor: cypress/base-14
+          executor: cypress/base-16
           start: npm run e2e:app
           store_artifacts: true
