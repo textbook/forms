@@ -1,5 +1,35 @@
 import * as apiService from "./apiService";
 
+/**
+ * Defines the form fields shown to the user.
+ *
+ * @typedef {
+ *   | "checkbox"
+ *   | "email"
+ *   | "select"
+ *   | "tel"
+ *   | "text"
+ *   | "textarea"
+ * } FieldType - see mapping to components in ./inputs/index.js
+ * @typedef {
+ *   | string[]
+ *   | (() => string[] | Promise<string[]>)
+ * } Choices - either an array of the choices, or a provider function
+ * @typedef {
+ *   | boolean
+ *   | ((data: any) => boolean)
+ * } Required - whether it's required, or a function determining this from the current input data
+ *
+ * @typedef {Object} Field
+ * @property {Choices=} choices - choices to show in e.g. select
+ * @property {string=} description - extra description to show to the user
+ * @property {string} field - the field name to use in the JSON payload
+ * @property {string} label - the label to display to the user
+ * @property {Required} required - whether this input is required
+ * @property {FieldType} type - which type of control to show
+ *
+ * @type {Field[]}
+ */
 const formDefinition = [
 	{
 		field: "firstName",
