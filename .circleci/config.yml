@@ -42,11 +42,7 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "ea:b9:9c:d4:75:f7:f5:b9:03:21:48:7e:ad:3b:6b:1b"
-      - run: >
-          gh-pages
-            --branch 'gh-pages'
-            --dist 'build-qa'
-            --message '[skip ci] QA deploy to GitHub repo'
+      - run: gh-pages --dist build-qa --message '[skip ci] QA deploy to GitHub repo'
 
 workflows:
   build:
