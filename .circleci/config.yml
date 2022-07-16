@@ -20,6 +20,33 @@ jobs:
             - ~/.npm
       - run: npm run lint
       - run: npm run test
+  deploy:
+    docker:
+      - image: cimg/node:16.16.0
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - forms-npm-{{ checksum "package-lock.json" }}
+      - run: npm ci
+      - run: |
+          npm install --location=global gh-pages
+          git config user.email 'jonathan@codeyourfuture.io'
+          git config user.name 'CircleCI'
+      - run:
+          command: npm run build
+          environment:
+            BUILD_PATH: "build-qa"
+            PUBLIC_URL: "https://blog.jonrshar.pe/forms"
+            REACT_APP_API: "https://cyf-api.qa.codeyourfuture.io"
+      - add_ssh_keys:
+          fingerprints:
+            - "ea:b9:9c:d4:75:f7:f5:b9:03:21:48:7e:ad:3b:6b:1b"
+      - run: >
+          gh-pages
+            --branch 'gh-pages'
+            --dist 'build-qa'
+            --message '[skip ci] QA deploy to GitHub repo'
 
 workflows:
   build:
@@ -32,3 +59,10 @@ workflows:
           no-workspace: true
           start: npm run e2e:app
           store_artifacts: true
+      - deploy:
+          filters:
+            branches:
+              only: main
+          requires:
+            - test
+            - cypress/run

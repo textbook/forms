@@ -28,6 +28,7 @@
     "start": "react-scripts start",
     "test": "react-scripts test"
   },
+  "homepage": ".",
   "proxy": "https://cyf-api.qa.codeyourfuture.io",
   "config": {
     "e2e_api": "http://example.com",
