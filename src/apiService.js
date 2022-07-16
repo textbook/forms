@@ -8,7 +8,7 @@ export const getCities = async () => {
 	const { cities } = await res.json();
 	return cities
 		.filter(({ visibleIn }) => visibleIn.includes("VOLUNTEER_FORM"))
-		.map(({ name }) => name);
+		.map(({ _id, name }) => ({ name, value: _id }));
 };
 
 export const postVolunteer = async (data) => {

@@ -26,7 +26,7 @@ describe("user journey", () => {
 		cy.wait("@createVolunteer").then(({ request }) => {
 			expect(request.body).to.deep.equal({
 				agreeToTOU: true,
-				cityName: "Glasgow",
+				cityId: "5c7fa02021b123001b68665b",
 				email: "jane.doe@example.com",
 				employer: "BrewDog",
 				firstName: "Jane",

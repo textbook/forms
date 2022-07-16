@@ -14,18 +14,20 @@ describe("API service", () => {
 
 	describe("getCities", () => {
 		const cities = [
-			{ name: "Gotham", visibleIn: ["VOLUNTEER_FORM"] },
-			{ name: "Metropolis", visibleIn: [] },
+			{ _id: "abc123", name: "Gotham", visibleIn: ["VOLUNTEER_FORM"] },
+			{ _id: "def456", name: "Metropolis", visibleIn: [] },
 		];
 
-		it("fetches and exposes visible city names", async () => {
+		it("fetches and exposes visible cities", async () => {
 			server.use(
 				rest.get("/cities", (req, res, ctx) => {
 					return res(ctx.status(200), ctx.json({ cities }));
 				}),
 			);
 
-			await expect(apiService.getCities()).resolves.toEqual(["Gotham"]);
+			await expect(apiService.getCities()).resolves.toEqual([
+				{ name: "Gotham", value: "abc123" },
+			]);
 		});
 
 		it("throws on non-2xx response", async () => {

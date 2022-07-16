@@ -12,8 +12,12 @@ import * as apiService from "./apiService";
  *   | "textarea"
  * } FieldType - see mapping to components in ./inputs/index.js
  * @typedef {
- *   | string[]
- *   | (() => string[] | Promise<string[]>)
+ *   | string
+ *   | { name: string, value: string }
+ * } Choice - either a simple string or an object with separate name and value
+ * @typedef {
+ *   | Choice[]
+ *   | (() => Choice[] | Promise<Choice[]>)
  * } Choices - either an array of the choices, or a provider function
  * @typedef {
  *   | boolean
@@ -51,7 +55,7 @@ const formDefinition = [
 	},
 	{
 		choices: () => apiService.getCities(),
-		field: "cityName",
+		field: "cityId",
 		label: "Which Code Your Future location is near to you?",
 		required: true,
 		type: "select",
