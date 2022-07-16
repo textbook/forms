@@ -8,7 +8,8 @@ export const getCities = async () => {
 	const { cities } = await res.json();
 	return cities
 		.filter(({ visibleIn }) => visibleIn.includes("VOLUNTEER_FORM"))
-		.map(({ _id, name }) => ({ name, value: _id }));
+		.map(({ _id, name }) => ({ name, value: _id }))
+		.sort(alphabeticalBy("name"));
 };
 
 export const postVolunteer = async (data) => {
@@ -21,3 +22,12 @@ export const postVolunteer = async (data) => {
 		throw new Error(res.statusText);
 	}
 };
+
+function alphabeticalBy(property) {
+	return (first, second) => {
+		if (first[property] === second[property]) {
+			return 0;
+		}
+		return first[property] > second[property] ? 1 : -1;
+	};
+}

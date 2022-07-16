@@ -14,11 +14,16 @@ describe("API service", () => {
 
 	describe("getCities", () => {
 		const cities = [
-			{ _id: "abc123", name: "Gotham", visibleIn: ["VOLUNTEER_FORM"] },
+			{ _id: "abc123", name: "Gotham City", visibleIn: ["VOLUNTEER_FORM"] },
 			{ _id: "def456", name: "Metropolis", visibleIn: [] },
+			{
+				_id: "ghi789",
+				name: "Blüdhaven",
+				visibleIn: ["DASHBOARD", "VOLUNTEER_FORM"],
+			},
 		];
 
-		it("fetches and exposes visible cities", async () => {
+		it("fetches and exposes visible cities in a useful order", async () => {
 			server.use(
 				rest.get("/cities", (req, res, ctx) => {
 					return res(ctx.status(200), ctx.json({ cities }));
@@ -26,7 +31,8 @@ describe("API service", () => {
 			);
 
 			await expect(apiService.getCities()).resolves.toEqual([
-				{ name: "Gotham", value: "abc123" },
+				{ name: "Blüdhaven", value: "ghi789" },
+				{ name: "Gotham City", value: "abc123" },
 			]);
 		});
 
