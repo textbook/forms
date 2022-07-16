@@ -11,21 +11,11 @@ function Select({ choices, description, label, onChange, required, value }) {
 				<option disabled value="">
 					Select here
 				</option>
-				{choices.map((choice) => {
-					if (typeof choice === "string") {
-						return (
-							<option key={choice} value={choice}>
-								{choice}
-							</option>
-						);
-					}
-					const { name, value } = choice;
-					return (
-						<option key={value} value={value}>
-							{name}
-						</option>
-					);
-				})}
+				{choices.map(({ name, value }) => (
+					<option key={value} value={value}>
+						{name}
+					</option>
+				))}
 			</select>
 		</FormControl>
 	);

@@ -9,15 +9,15 @@ function Skillset({ choices, label, onChange, value }) {
 
 	useEffect(() => {
 		setExpandedSkills(
-			choices.reduce((expanded, choice) => {
-				const skill = typeof choice === "string" ? choice : choice.value;
-				return {
+			choices.reduce(
+				(expanded, { value: skill }) => ({
 					...expanded,
 					[skill]: levels.includes(
 						value?.find(({ name }) => skill === name)?.level,
 					),
-				};
-			}, {}),
+				}),
+				{},
+			),
 		);
 	}, [choices, value]);
 
@@ -25,8 +25,7 @@ function Skillset({ choices, label, onChange, value }) {
 		<div>
 			<h3 dangerouslySetInnerHTML={{ __html: label }} />
 			{choices.map((choice) => {
-				const { name, value: skill } =
-					typeof choice === "string" ? { name: choice, value: choice } : choice;
+				const { name, value: skill } = choice;
 				const anyExperience = value?.find(({ name }) => skill === name)?.level;
 				const expanded = expandedSkills[skill];
 				return (
