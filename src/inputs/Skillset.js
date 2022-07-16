@@ -1,83 +1,81 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 import Checkbox from "./Checkbox";
 
 const levels = ["Some", "Professional experience"];
 
+function Skill({ experience, name, onChange, skill }) {
+	const [expanded, setExpanded] = useState(false);
+	return (
+		<div>
+			<Checkbox
+				label={name}
+				onChange={() => {
+					if (expanded) {
+						onChange(undefined);
+					}
+					setExpanded(!expanded);
+				}}
+				value={expanded}
+			/>
+			{expanded && (
+				<fieldset>
+					<legend>Level of experience</legend>
+					{levels.map((level) => (
+						<div key={level}>
+							<label>
+								<input
+									checked={experience === level}
+									name={skill}
+									onChange={() => onChange(level)}
+									required
+									type="radio"
+									value={level}
+								/>
+								{level}
+							</label>
+						</div>
+					))}
+				</fieldset>
+			)}
+		</div>
+	);
+}
+
 function Skillset({ choices, label, onChange, value }) {
-	const [expandedSkills, setExpandedSkills] = useState({});
-
-	useEffect(() => {
-		setExpandedSkills(
-			choices.reduce(
-				(expanded, { value: skill }) => ({
-					...expanded,
-					[skill]: levels.includes(
-						value?.find(({ name }) => skill === name)?.level,
-					),
-				}),
-				{},
-			),
-		);
-	}, [choices, value]);
-
 	return (
 		<div>
 			<h3 dangerouslySetInnerHTML={{ __html: label }} />
-			{choices.map((choice) => {
+			{choices?.map((choice) => {
 				const { name, value: skill } = choice;
-				const anyExperience = value?.find(({ name }) => skill === name)?.level;
-				const expanded = expandedSkills[skill];
+				const previousExperience = value?.find(
+					({ name }) => skill === name,
+				)?.level;
 				return (
-					<div key={skill}>
-						<Checkbox
-							label={name}
-							onChange={() => {
-								if (expanded) {
-									// remove item from array when collapsing skill
-									onChange(value?.filter(({ name }) => name !== skill));
-								} else {
-									setExpandedSkills({ ...expandedSkills, [skill]: true });
-								}
-							}}
-							value={expanded}
-						/>
-						{expanded && (
-							<fieldset>
-								<legend>Level of experience</legend>
-								{levels.map((level) => (
-									<div key={level}>
-										<label>
-											<input
-												checked={anyExperience === level}
-												name={skill}
-												onChange={() => {
-													if (anyExperience) {
-														// update item in array when changing level
-														onChange(
-															value.map((item) =>
-																item.name === skill ? { ...item, level } : item,
-															),
-														);
-													} else {
-														// add item to array when setting initial level
-														onChange([
-															...(value ?? []),
-															{ level, name: skill },
-														]);
-													}
-												}}
-												required
-												type="radio"
-												value={level}
-											/>
-											{level}
-										</label>
-									</div>
-								))}
-							</fieldset>
-						)}
-					</div>
+					<Skill
+						experience={previousExperience}
+						key={skill}
+						name={name}
+						onChange={(newExperience) => {
+							if (!newExperience) {
+								onChange(value?.filter(({ name }) => name !== skill));
+							} else if (previousExperience) {
+								onChange(
+									value.map((item) =>
+										item.name === skill
+											? { ...item, level: newExperience }
+											: item,
+									),
+								);
+							} else {
+								onChange([
+									...(value ?? []),
+									{ level: newExperience, name: skill },
+								]);
+							}
+						}}
+						skill={skill}
+					/>
 				);
 			})}
 		</div>

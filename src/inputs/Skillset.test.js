@@ -1,12 +1,13 @@
 import { render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { useState } from "react";
 
 import Skillset from "./Skillset";
 
 describe("Skillset component", () => {
 	it("renders the section title", () => {
 		const label = "Some specific skillset";
-		render(<Skillset choices={[]} label={label} />);
+		render(<Skillset label={label} />);
 		expect(screen.getByRole("heading", { level: 3 })).toHaveTextContent(label);
 	});
 
@@ -31,18 +32,14 @@ describe("Skillset component", () => {
 		});
 	});
 
-	it("expands selected values", () => {
-		render(
-			<Skillset
-				choices={[{ name: "Baz", value: "baz" }]}
-				value={[{ level: "Some", name: "baz" }]}
-			/>,
-		);
+	it("expands selected values", async () => {
+		render(<Skillset choices={[{ name: "Baz", value: "baz" }]} />);
+		await userEvent.click(screen.getByRole("checkbox", { name: "Baz" }));
 		expect(screen.getByRole("checkbox", { name: "Baz" })).toBeChecked();
-		expect(screen.getByRole("radio", { name: "Some" })).toBeChecked();
+		expect(screen.getByRole("radio", { name: "Some" })).toBeInTheDocument();
 		expect(
 			screen.getByRole("radio", { name: "Professional experience" }),
-		).not.toBeChecked();
+		).toBeInTheDocument();
 	});
 
 	it("adds items to the list", async () => {
@@ -73,6 +70,7 @@ describe("Skillset component", () => {
 			/>,
 		);
 		await userEvent.click(screen.getByRole("checkbox", { name: "Baz" }));
+		await userEvent.click(screen.getByRole("checkbox", { name: "Baz" }));
 		expect(onChange).toHaveBeenCalledWith([]);
 	});
 
@@ -85,7 +83,31 @@ describe("Skillset component", () => {
 				value={[{ level: "Professional experience", name: "baz" }]}
 			/>,
 		);
+		await userEvent.click(screen.getByRole("checkbox", { name: "Baz" }));
 		await userEvent.click(screen.getByRole("radio", { name: "Some" }));
 		expect(onChange).toHaveBeenCalledWith([{ level: "Some", name: "baz" }]);
+	});
+
+	it("doesn't impact other skills on editing", async () => {
+		function Parent() {
+			const [skills, setSkills] = useState();
+			return (
+				<Skillset
+					choices={[
+						{ name: "Baz", value: "baz" },
+						{ name: "Qux", value: "qux" },
+					]}
+					onChange={setSkills}
+					value={skills}
+				/>
+			);
+		}
+		render(<Parent />);
+
+		await userEvent.click(screen.getByRole("checkbox", { name: "Baz" }));
+		await userEvent.click(screen.getByRole("checkbox", { name: "Qux" }));
+		await userEvent.click(screen.getByRole("checkbox", { name: "Baz" }));
+		expect(screen.getByRole("radio", { name: "Some" })).toBeInTheDocument();
+		expect(screen.getByRole("checkbox", { name: "Baz" })).not.toBeChecked();
 	});
 });
