@@ -10,14 +10,16 @@ function TextArea({
 }) {
 	return (
 		<FormControl description={description} label={label}>
-			<textarea
-				cols={30}
-				onChange={({ target: { value } }) => onChange(value)}
-				required={required}
-				rows={5}
-				value={value ?? ""}
-				{...inputProps}
-			/>
+			<div>
+				<textarea
+					cols={30}
+					onChange={({ target: { value } }) => onChange(value)}
+					required={required}
+					rows={5}
+					value={value ?? ""}
+					{...inputProps}
+				/>
+			</div>
 		</FormControl>
 	);
 }

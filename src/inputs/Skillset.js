@@ -46,28 +46,34 @@ function Skillset({ choices, label, onChange, value }) {
 						/>
 						{expanded[index] && (
 							<fieldset>
+								<legend>Level of experience</legend>
 								{levels.map((level) => (
-									<label key={level}>
-										{level}
-										<input
-											checked={selected === level}
-											name={skill}
-											onChange={() => {
-												if (selected) {
-													onChange(
-														value.map((item) =>
-															item.name === skill ? { ...item, level } : item,
-														),
-													);
-												} else {
-													onChange([...(value ?? []), { level, name: skill }]);
-												}
-											}}
-											required
-											type="radio"
-											value={level}
-										/>
-									</label>
+									<div key={level}>
+										<label>
+											<input
+												checked={selected === level}
+												name={skill}
+												onChange={() => {
+													if (selected) {
+														onChange(
+															value.map((item) =>
+																item.name === skill ? { ...item, level } : item,
+															),
+														);
+													} else {
+														onChange([
+															...(value ?? []),
+															{ level, name: skill },
+														]);
+													}
+												}}
+												required
+												type="radio"
+												value={level}
+											/>
+											{level}
+										</label>
+									</div>
 								))}
 							</fieldset>
 						)}
