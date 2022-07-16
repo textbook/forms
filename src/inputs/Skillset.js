@@ -5,62 +5,62 @@ import Checkbox from "./Checkbox";
 const levels = ["Some", "Professional experience"];
 
 function Skillset({ choices, label, onChange, value }) {
-	const [expanded, setExpanded] = useState([]);
+	const [expandedSkills, setExpandedSkills] = useState({});
 
 	useEffect(() => {
-		setExpanded(
-			choices.map((choice) => {
+		setExpandedSkills(
+			choices.reduce((expanded, choice) => {
 				const skill = typeof choice === "string" ? choice : choice.value;
-				return levels.includes(
-					value?.find(({ name }) => skill === name)?.level,
-				);
-			}),
+				return {
+					...expanded,
+					[skill]: levels.includes(
+						value?.find(({ name }) => skill === name)?.level,
+					),
+				};
+			}, {}),
 		);
 	}, [choices, value]);
 
 	return (
 		<div>
 			<h3 dangerouslySetInnerHTML={{ __html: label }} />
-			{choices.map((choice, index) => {
-				let name, skill;
-				if (typeof choice === "string") {
-					name = choice;
-					skill = choice;
-				} else {
-					({ name, value: skill } = choice);
-				}
-				const selected = value?.find(({ name }) => skill === name)?.level;
+			{choices.map((choice) => {
+				const { name, value: skill } =
+					typeof choice === "string" ? { name: choice, value: choice } : choice;
+				const anyExperience = value?.find(({ name }) => skill === name)?.level;
+				const expanded = expandedSkills[skill];
 				return (
 					<div key={skill}>
 						<Checkbox
 							label={name}
 							onChange={() => {
-								if (expanded[index]) {
+								if (expanded) {
+									// remove item from array when collapsing skill
 									onChange(value?.filter(({ name }) => name !== skill));
 								}
-								setExpanded(
-									expanded.map((val, idx) => (idx === index ? !val : val)),
-								);
+								setExpandedSkills({ ...expandedSkills, [skill]: !expanded });
 							}}
-							value={expanded[index]}
+							value={expanded}
 						/>
-						{expanded[index] && (
+						{expanded && (
 							<fieldset>
 								<legend>Level of experience</legend>
 								{levels.map((level) => (
 									<div key={level}>
 										<label>
 											<input
-												checked={selected === level}
+												checked={anyExperience === level}
 												name={skill}
 												onChange={() => {
-													if (selected) {
+													if (anyExperience) {
+														// update item in array when changing level
 														onChange(
 															value.map((item) =>
 																item.name === skill ? { ...item, level } : item,
 															),
 														);
 													} else {
+														// add item to array when setting initial level
 														onChange([
 															...(value ?? []),
 															{ level, name: skill },

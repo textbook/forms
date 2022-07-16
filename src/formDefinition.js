@@ -102,7 +102,7 @@ const formDefinition = [
 	{
 		choices: ["Coaching / Mentoring ", "Help people learn public speaking"],
 		field: "guidePeople",
-		label: "Guide people",
+		label: "A. Guide people",
 		type: "skillset",
 	},
 	{
@@ -116,7 +116,7 @@ const formDefinition = [
 			"Other",
 		],
 		field: "techSkill",
-		label: "Teach people coding or UX",
+		label: "B. Teach people coding or UX",
 		type: "skillset",
 	},
 	{
@@ -134,7 +134,7 @@ const formDefinition = [
 			"Other",
 		],
 		field: "otherSkill",
-		label: "Help run Code Your Future",
+		label: "C. Help run Code Your Future",
 		type: "skillset",
 	},
 	{
