@@ -37,8 +37,9 @@ function Skillset({ choices, label, onChange, value }) {
 								if (expanded) {
 									// remove item from array when collapsing skill
 									onChange(value?.filter(({ name }) => name !== skill));
+								} else {
+									setExpandedSkills({ ...expandedSkills, [skill]: true });
 								}
-								setExpandedSkills({ ...expandedSkills, [skill]: !expanded });
 							}}
 							value={expanded}
 						/>
