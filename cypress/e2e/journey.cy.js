@@ -20,6 +20,8 @@ describe("user journey", () => {
 		cy.findByRole("textbox", { name: /why do you want to volunteer/i }).type(
 			"I am a helpful person",
 		);
+		cy.findByRole("checkbox", { name: /react/i }).check();
+		cy.findByRole("radio", { name: /professional/i }).check();
 		cy.findByRole("checkbox", { name: /terms of use/i }).check();
 		cy.findByRole("button", { name: /submit/i }).click();
 
@@ -33,6 +35,7 @@ describe("user journey", () => {
 				hearAboutCYF: "Employer",
 				interestedInCYF: "I am a helpful person",
 				lastName: "Doe",
+				techSkill: [{ name: "ReactJS", level: "Professional experience" }],
 				tel: "+44 7700 900 987",
 			});
 		});

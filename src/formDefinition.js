@@ -7,6 +7,7 @@ import * as apiService from "./apiService";
  *   | "checkbox"
  *   | "email"
  *   | "select"
+ *   | "skillset"
  *   | "tel"
  *   | "text"
  *   | "textarea"
@@ -97,6 +98,17 @@ const formDefinition = [
 		label: "Why do you want to volunteer with Code Your Future?",
 		required: true,
 		type: "textarea",
+	},
+	{
+		choices: [
+			{ name: "Node", value: "NodeJS" },
+			{ name: "React", value: "ReactJS" },
+			{ name: "SQL", value: "Databases" },
+		],
+		field: "techSkill",
+		label: "Teach people coding or UX",
+		required: false,
+		type: "skillset",
 	},
 	{
 		field: "agreeToTOU",
