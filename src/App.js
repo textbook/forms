@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import * as apiService from "./apiService";
 import formDefinition from "./formDefinition";
 import Form from "./Form";
+import Header from "./Header";
 
 function App() {
 	const [form, setForm] = useState();
@@ -27,17 +28,18 @@ function App() {
 		apiService.postVolunteer(data);
 	};
 
-	if (!form) {
-		return null;
-	}
-
 	return (
-		<Form
-			data={data}
-			formDefinition={form}
-			onChange={({ field, value }) => setData({ ...data, [field]: value })}
-			onSubmit={submitForm}
-		/>
+		<>
+			<Header />
+			{form && (
+				<Form
+					data={data}
+					formDefinition={form}
+					onChange={({ field, value }) => setData({ ...data, [field]: value })}
+					onSubmit={submitForm}
+				/>
+			)}
+		</>
 	);
 }
 

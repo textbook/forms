@@ -20,7 +20,7 @@ function Skill({ experience, name, onChange, skill }) {
 			/>
 			{expanded && (
 				<fieldset>
-					<legend>Level of experience</legend>
+					<legend>Your level of experience</legend>
 					{levels.map((level) => (
 						<div key={level}>
 							<label>
