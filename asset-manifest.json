@@ -1,15 +1,16 @@
 {
   "files": {
-    "main.css": "https://blog.jonrshar.pe/forms/static/css/main.e6c13ad2.css",
-    "main.js": "https://blog.jonrshar.pe/forms/static/js/main.f7dd33e5.js",
+    "main.css": "https://blog.jonrshar.pe/forms/static/css/main.9c9408eb.css",
+    "main.js": "https://blog.jonrshar.pe/forms/static/js/main.38f49c4a.js",
     "static/js/787.5bd4efce.chunk.js": "https://blog.jonrshar.pe/forms/static/js/787.5bd4efce.chunk.js",
+    "static/media/logo-CYF-square.png": "https://blog.jonrshar.pe/forms/static/media/logo-CYF-square.c6c31591f2e4fcdae35c.png",
     "index.html": "https://blog.jonrshar.pe/forms/index.html",
-    "main.e6c13ad2.css.map": "https://blog.jonrshar.pe/forms/static/css/main.e6c13ad2.css.map",
-    "main.f7dd33e5.js.map": "https://blog.jonrshar.pe/forms/static/js/main.f7dd33e5.js.map",
+    "main.9c9408eb.css.map": "https://blog.jonrshar.pe/forms/static/css/main.9c9408eb.css.map",
+    "main.38f49c4a.js.map": "https://blog.jonrshar.pe/forms/static/js/main.38f49c4a.js.map",
     "787.5bd4efce.chunk.js.map": "https://blog.jonrshar.pe/forms/static/js/787.5bd4efce.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.e6c13ad2.css",
-    "static/js/main.f7dd33e5.js"
+    "static/css/main.9c9408eb.css",
+    "static/js/main.38f49c4a.js"
   ]
 }
