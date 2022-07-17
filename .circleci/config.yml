@@ -53,6 +53,8 @@ workflows:
           command: npm run e2e:run
           executor: cypress/base-14
           no-workspace: true
+          requires:
+            - test
           start: npm run e2e:app
           store_artifacts: true
       - deploy:
@@ -60,5 +62,4 @@ workflows:
             branches:
               only: main
           requires:
-            - test
             - cypress/run
