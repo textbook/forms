@@ -8,11 +8,11 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - forms-npm-{{ checksum "package-lock.json" }}
-            - forms-npm
+            - forms-npm-a-{{ checksum "package-lock.json" }}
+            - forms-npm-a-
       - run: npm ci
       - save_cache:
-          key: forms-npm-{{ checksum "package-lock.json" }}
+          key: forms-npm-a-{{ checksum "package-lock.json" }}
           paths:
             - ~/.cache
             - ~/.npm
@@ -27,7 +27,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - forms-npm-{{ checksum "package-lock.json" }}
+            - forms-npm-a-{{ checksum "package-lock.json" }}
       - run: npm ci
       - run: npm run e2e
       - store_artifacts:
@@ -41,7 +41,7 @@ jobs:
       - checkout
       - restore_cache:
           keys:
-            - forms-npm-{{ checksum "package-lock.json" }}
+            - forms-npm-a-{{ checksum "package-lock.json" }}
       - run: npm ci
       - run: |
           npm install --location=global gh-pages
