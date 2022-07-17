@@ -1,8 +1,5 @@
 version: 2.1
 
-orbs:
-  cypress: cypress-io/cypress@2.0.0
-
 jobs:
   test:
     docker:
@@ -17,9 +14,26 @@ jobs:
       - save_cache:
           key: forms-npm-{{ checksum "package-lock.json" }}
           paths:
+            - ~/.cache
             - ~/.npm
       - run: npm run lint
       - run: npm run test
+  e2e:
+    docker:
+      - image: cypress/base:16.14.0
+        environment:
+          TERM: xterm
+    steps:
+      - checkout
+      - restore_cache:
+          keys:
+            - forms-npm-{{ checksum "package-lock.json" }}
+      - run: npm ci
+      - run: npm run e2e
+      - store_artifacts:
+          path: cypress/videos
+      - store_artifacts:
+          path: cypress/screenshots
   deploy:
     docker:
       - image: cimg/node:16.16.0
@@ -48,18 +62,12 @@ workflows:
   build:
     jobs:
       - test
-      - cypress/run:
-          cache-key: forms-npm-{{ checksum "package-lock.json" }}
-          command: npm run e2e:run
-          executor: cypress/base-14
-          no-workspace: true
+      - e2e:
           requires:
             - test
-          start: npm run e2e:app
-          store_artifacts: true
       - deploy:
           filters:
             branches:
               only: main
           requires:
-            - cypress/run
+            - e2e
