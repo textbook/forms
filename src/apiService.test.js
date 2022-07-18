@@ -1,17 +1,8 @@
 import { rest } from "msw";
-import { setupServer } from "msw/node";
 
 import * as apiService from "./apiService";
 
-const server = setupServer();
-
 describe("API service", () => {
-	beforeAll(() => server.listen());
-
-	beforeEach(() => server.resetHandlers());
-
-	afterAll(() => server.close());
-
 	describe("getCities", () => {
 		const cities = [
 			{ _id: "abc123", name: "Gotham City", visibleIn: ["VOLUNTEER_FORM"] },
@@ -24,7 +15,7 @@ describe("API service", () => {
 		];
 
 		it("fetches and exposes visible cities in a useful order", async () => {
-			server.use(
+			global.server.use(
 				rest.get("/cities", (req, res, ctx) => {
 					return res(ctx.status(200), ctx.json({ cities }));
 				}),
@@ -37,7 +28,7 @@ describe("API service", () => {
 		});
 
 		it("throws on non-2xx response", async () => {
-			server.use(
+			global.server.use(
 				rest.get("/cities", (req, res, ctx) => {
 					return res(ctx.status(404));
 				}),
@@ -55,7 +46,7 @@ describe("API service", () => {
 				lastName: "Wayne",
 			};
 			let sent;
-			server.use(
+			global.server.use(
 				rest.post("/volunteer", async (req, res, ctx) => {
 					sent = await req.json();
 					return res(ctx.status(200));
@@ -68,7 +59,7 @@ describe("API service", () => {
 		});
 
 		it("throws on non-2xx response", async () => {
-			server.use(
+			global.server.use(
 				rest.post("/volunteer", (req, res, ctx) => {
 					return res(ctx.status(404));
 				}),
