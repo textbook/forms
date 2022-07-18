@@ -38,13 +38,13 @@ import * as apiService from "./apiService";
 const formDefinition = [
 	{
 		field: "firstName",
-		label: "First name",
+		label: "Given name",
 		required: true,
 		type: "text",
 	},
 	{
 		field: "lastName",
-		label: "Last name",
+		label: "Family name",
 		required: true,
 		type: "text",
 	},

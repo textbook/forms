@@ -10,8 +10,8 @@ describe("user journey", () => {
 		}).as("createVolunteer");
 		cy.visit("/");
 
-		cy.findByRole("textbox", { name: /first name/i }).type("Jane");
-		cy.findByRole("textbox", { name: /last name/i }).type("Doe");
+		cy.findByRole("textbox", { name: /given name/i }).type("Jane");
+		cy.findByRole("textbox", { name: /family name/i }).type("Doe");
 		cy.findByRole("textbox", { name: /email/i }).type("jane.doe@example.com");
 		cy.findByRole("combobox", { name: /location/i }).select("Glasgow");
 		cy.findByRole("textbox", { name: /phone/i }).type("+44 7700 900 987");
