@@ -24,11 +24,16 @@ import * as apiService from "./apiService";
  *   | boolean
  *   | ((data: any) => boolean)
  * } Required - whether it's required, or a function determining this from the current input data
+ *@typedef {
+ *   | boolean
+ *   | ((data: any) => boolean)
+ *} Hidden - whether it's hidden, or a function determining this from the current input data
  *
  * @typedef {Object} Field
  * @property {Choices=} choices - choices to show in e.g. select
  * @property {string=} description - extra description to show to the user
  * @property {string} field - the field name to use in the JSON payload
+ * @property {Hidden=} hidden - whether this input is hidden
  * @property {string} label - the label to display to the user
  * @property {Required} required - whether this input is required
  * @property {FieldType} type - which type of control to show
@@ -121,8 +126,9 @@ const formDefinition = [
 	{
 		choices: ["Capgemini", "Other"],
 		field: "employer",
+		hidden: ({ hearAboutCYF }) => hearAboutCYF !== "Employer",
 		label: "Employer name",
-		required: ({ hearAboutCYF }) => hearAboutCYF === "Employer",
+		required: true,
 		type: "select",
 	},
 	{

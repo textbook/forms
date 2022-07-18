@@ -2,11 +2,16 @@ import getInput from "./inputs";
 
 function Form({ data, formDefinition, onChange }) {
 	return formDefinition.map(
-		({ choices, field, label, required, type, ...props }) => {
+		({ choices, field, hidden, label, required, type, ...props }) => {
 			const Component = getInput(type);
+			const hiddenField =
+				typeof hidden === "function" ? hidden(data) : !!hidden;
 			const requiredField =
 				typeof required === "function" ? required(data) : !!required;
 
+			if (hiddenField) {
+				return null;
+			}
 			return (
 				<Component
 					key={field}

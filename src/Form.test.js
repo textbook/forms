@@ -239,4 +239,37 @@ describe("Form component", () => {
 			"http://example.com",
 		);
 	});
+
+	it("dynamically displays fields based on data", () => {
+		render(
+			<Form
+				data={{ foo: "foo" }}
+				formDefinition={[
+					{ field: "foo", label: "Foo", type: "text" },
+					{
+						field: "bar",
+						hidden: ({ foo }) => foo !== "foo",
+						label: "Bar",
+						type: "text",
+					},
+					{
+						field: "baz",
+						hidden: ({ foo }) => foo === "foo",
+						label: "Baz",
+						type: "text",
+					},
+					{ field: "qux", hidden: true, label: "Qux", type: "text" },
+				]}
+			/>,
+		);
+
+		expect(screen.getByRole("textbox", { name: /foo/i })).toBeInTheDocument();
+		expect(screen.getByRole("textbox", { name: /bar/i })).toBeInTheDocument();
+		expect(
+			screen.queryByRole("textbox", { name: /baz/i }),
+		).not.toBeInTheDocument();
+		expect(
+			screen.queryByRole("textbox", { name: /qux/i }),
+		).not.toBeInTheDocument();
+	});
 });

@@ -47,16 +47,13 @@ describe("user journey", () => {
 		});
 	});
 
-	it("employer is optional if that isn't how they heard about CYF", () => {
+	it("employer is not displayed if that isn't how they heard about CYF", () => {
 		cy.intercept("GET", `${API}/cities`, {
 			fixture: "cities.json",
 		});
 		cy.visit("/");
 
-		cy.findByRole("combobox", { name: /employer/i }).should(
-			"not.have.attr",
-			"required",
-		);
+		cy.findByRole("combobox", { name: /employer/i }).should("not.exist");
 
 		cy.findByRole("combobox", { name: /hear about/i }).select("Employer");
 		cy.findByRole("combobox", { name: /employer/i }).should(
@@ -67,9 +64,6 @@ describe("user journey", () => {
 		cy.findByRole("combobox", { name: /hear about/i }).select(
 			"Colleague or friend",
 		);
-		cy.findByRole("combobox", { name: /employer/i }).should(
-			"not.have.attr",
-			"required",
-		);
+		cy.findByRole("combobox", { name: /employer/i }).should("not.exist");
 	});
 });
