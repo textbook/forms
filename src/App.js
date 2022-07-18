@@ -6,8 +6,9 @@ import Form from "./Form";
 import Header from "./Header";
 
 function App() {
-	const [form, setForm] = useState();
 	const [data, setData] = useState({});
+	const [form, setForm] = useState();
+	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
 		Promise.all(
@@ -25,19 +26,27 @@ function App() {
 
 	const submitForm = (event) => {
 		event.preventDefault();
-		apiService.postVolunteer(data);
+		setLoading(true);
+		apiService.postVolunteer(data).finally(() => setLoading(false));
 	};
 
 	return (
 		<>
 			<Header />
 			{form && (
-				<Form
-					data={data}
-					formDefinition={form}
-					onChange={({ field, value }) => setData({ ...data, [field]: value })}
-					onSubmit={submitForm}
-				/>
+				<form onSubmit={submitForm}>
+					<Form
+						data={data}
+						formDefinition={form}
+						onChange={({ field, value }) =>
+							setData({ ...data, [field]: value })
+						}
+						onSubmit={submitForm}
+					/>
+					<button disabled={loading} type="submit">
+						Submit
+					</button>
+				</form>
 			)}
 		</>
 	);

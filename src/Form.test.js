@@ -10,7 +10,6 @@ describe("Form component", () => {
 				data={{ field: "value" }}
 				formDefinition={[{ field: "field", label: "label", type: "text" }]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -26,31 +25,12 @@ describe("Form component", () => {
 				data={{ field: "value" }}
 				formDefinition={[{ field: "field", label: "label", type: "text" }]}
 				onChange={onChange}
-				onSubmit={() => {}}
 			/>,
 		);
 
 		await userEvent.type(screen.getByRole("textbox", { name: /label/i }), "!");
 
 		expect(onChange).toHaveBeenCalledWith({ field: "field", value: "value!" });
-	});
-
-	it("updates the parent on submit", async () => {
-		const onSubmit = jest
-			.fn()
-			.mockImplementation((event) => event.preventDefault());
-		render(
-			<Form
-				data={{ field: "value" }}
-				formDefinition={[{ field: "field", label: "label", type: "text" }]}
-				onChange={() => {}}
-				onSubmit={onSubmit}
-			/>,
-		);
-
-		await userEvent.click(screen.getByRole("button", { name: /submit/i }));
-
-		expect(onSubmit).toHaveBeenCalled();
 	});
 
 	it("renders select fields", async () => {
@@ -68,7 +48,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={onChange}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -96,7 +75,6 @@ describe("Form component", () => {
 					{ field: "other", label: "other", required: false, type: "text" },
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -124,7 +102,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -145,7 +122,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -167,7 +143,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -194,7 +169,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -216,7 +190,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -238,7 +211,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
@@ -259,7 +231,6 @@ describe("Form component", () => {
 					},
 				]}
 				onChange={() => {}}
-				onSubmit={() => {}}
 			/>,
 		);
 
