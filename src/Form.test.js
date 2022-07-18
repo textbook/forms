@@ -272,4 +272,23 @@ describe("Form component", () => {
 			screen.queryByRole("textbox", { name: /qux/i }),
 		).not.toBeInTheDocument();
 	});
+
+	it("displays errors on fields", () => {
+		const error = "Something bad happened";
+		render(
+			<Form
+				data={{ foo: "123", bar: "456" }}
+				errors={{ foo: error }}
+				formDefinition={[
+					{ field: "foo", label: "Foo", type: "select" },
+					{ field: "bar", label: "Bar", type: "email" },
+				]}
+			/>,
+		);
+
+		expect(screen.getByText(error)).toBeInTheDocument();
+		const input = screen.getByRole("combobox", { name: /foo/i });
+		// eslint-disable-next-line testing-library/no-node-access -- need access to the form control div
+		expect(input.parentElement.parentElement).toHaveClass("error");
+	});
 });

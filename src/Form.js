@@ -1,6 +1,6 @@
 import getInput from "./inputs";
 
-function Form({ data, formDefinition, onChange }) {
+function Form({ data, errors, formDefinition, onChange }) {
 	return formDefinition.map(
 		({ choices, field, hidden, label, required, type, ...props }) => {
 			const Component = getInput(type);
@@ -20,6 +20,7 @@ function Form({ data, formDefinition, onChange }) {
 							? { name: choice, value: choice }
 							: choice,
 					)}
+					error={errors?.[field]}
 					label={requiredField ? `${label}*` : label}
 					onChange={(value) => onChange({ field, value })}
 					required={requiredField}

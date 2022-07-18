@@ -19,7 +19,8 @@ export const postVolunteer = async (data) => {
 		method: "POST",
 	});
 	if (!res.ok) {
-		throw new Error(res.statusText);
+		const { error } = await res.json();
+		throw new Error(error);
 	}
 };
 

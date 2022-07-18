@@ -7,6 +7,7 @@ import Header from "./Header";
 
 function App() {
 	const [data, setData] = useState({});
+	const [errors, setErrors] = useState({});
 	const [form, setForm] = useState();
 	const [loading, setLoading] = useState(false);
 
@@ -26,8 +27,18 @@ function App() {
 
 	const submitForm = (event) => {
 		event.preventDefault();
+		setErrors({});
 		setLoading(true);
-		apiService.postVolunteer(data).finally(() => setLoading(false));
+		apiService
+			.postVolunteer(data)
+			.catch((err) => {
+				if (err.message === "EMAIL_EXIST") {
+					setErrors({
+						email: "An account with this email address already exists",
+					});
+				}
+			})
+			.finally(() => setLoading(false));
 	};
 
 	return (
@@ -37,6 +48,7 @@ function App() {
 				<form onSubmit={submitForm}>
 					<Form
 						data={data}
+						errors={errors}
 						formDefinition={form}
 						onChange={({ field, value }) =>
 							setData({ ...data, [field]: value })

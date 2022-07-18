@@ -1,8 +1,16 @@
 import FormControl from "./FormControl";
 
-function Select({ choices, description, label, onChange, required, value }) {
+function Select({
+	choices,
+	description,
+	error,
+	label,
+	onChange,
+	required,
+	value,
+}) {
 	return (
-		<FormControl description={description} label={label}>
+		<FormControl description={description} error={error} label={label}>
 			<select
 				onChange={({ target: { value } }) => onChange(value)}
 				required={required}
@@ -11,7 +19,7 @@ function Select({ choices, description, label, onChange, required, value }) {
 				<option disabled value="">
 					Select here
 				</option>
-				{choices.map(({ name, value }) => (
+				{choices?.map(({ name, value }) => (
 					<option key={value} value={value}>
 						{name}
 					</option>

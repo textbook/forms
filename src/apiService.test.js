@@ -61,11 +61,11 @@ describe("API service", () => {
 		it("throws on non-2xx response", async () => {
 			global.server.use(
 				rest.post("/volunteer", (req, res, ctx) => {
-					return res(ctx.status(404));
+					return res(ctx.status(400), ctx.json({ error: "lol whoops" }));
 				}),
 			);
 
-			await expect(apiService.postVolunteer({})).rejects.toThrow("Not Found");
+			await expect(apiService.postVolunteer({})).rejects.toThrow("lol whoops");
 		});
 	});
 });

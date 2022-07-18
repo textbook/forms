@@ -2,6 +2,7 @@ import FormControl from "./FormControl";
 
 function TextArea({
 	description,
+	error,
 	inputProps,
 	label,
 	onChange,
@@ -9,7 +10,7 @@ function TextArea({
 	value,
 }) {
 	return (
-		<FormControl description={description} label={label}>
+		<FormControl description={description} error={error} label={label}>
 			<div>
 				<textarea
 					cols={30}

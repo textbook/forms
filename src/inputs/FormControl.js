@@ -1,4 +1,6 @@
-function FormControl({ children, description, label, postfix = false }) {
+import "./FormControl.scss";
+
+function FormControl({ children, error, description, label, postfix = false }) {
 	function labelText() {
 		return (
 			<>
@@ -10,7 +12,7 @@ function FormControl({ children, description, label, postfix = false }) {
 		);
 	}
 	return (
-		<div>
+		<div className={error && "error"}>
 			<label>
 				{postfix ? (
 					<>
@@ -23,6 +25,7 @@ function FormControl({ children, description, label, postfix = false }) {
 						{children}
 					</>
 				)}
+				{error && <span>{error}</span>}
 			</label>
 		</div>
 	);

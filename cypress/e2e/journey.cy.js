@@ -66,4 +66,31 @@ describe("user journey", () => {
 		);
 		cy.findByRole("combobox", { name: /employer/i }).should("not.exist");
 	});
+
+	it("displays an error if the email already exists", () => {
+		cy.intercept("GET", `${API}/cities`, {
+			fixture: "cities.json",
+		});
+		cy.intercept("POST", `${API}/volunteer`, {
+			body: { error: "EMAIL_EXIST" },
+			statusCode: 400,
+		}).as("createVolunteer");
+
+		cy.findByRole("textbox", { name: /given name/i }).type("John");
+		cy.findByRole("textbox", { name: /family name/i }).type("Doe");
+		cy.findByRole("textbox", { name: /email/i }).type("existing@example.com");
+		cy.findByRole("combobox", { name: /location/i }).select("London");
+		cy.findByRole("textbox", { name: /phone/i }).type("+44 7700 900 900");
+		cy.findByRole("textbox", { name: /why do you want to volunteer/i }).type(
+			"No particular reason",
+		);
+		cy.findByRole("checkbox", { name: /terms of use/i }).check();
+		cy.findByRole("checkbox", { name: /contact me/i }).check();
+		cy.findByRole("button", { name: /submit/i }).click();
+
+		cy.wait("@createVolunteer");
+		cy.findByText("An account with this email address already exists").should(
+			"exist",
+		);
+	});
 });

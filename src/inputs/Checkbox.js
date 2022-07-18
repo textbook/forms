@@ -1,10 +1,16 @@
 import FormControl from "./FormControl";
 
-function Checkbox({ description, label, onChange, required, value }) {
+function Checkbox({ description, error, label, onChange, required, value }) {
 	return (
-		<FormControl description={description} label={label} postfix={true}>
+		<FormControl
+			description={description}
+			error={error}
+			label={label}
+			postfix={true}
+		>
 			<input
 				checked={!!value}
+				className={error ? "error" : ""}
 				onChange={() => onChange(!value)}
 				required={required}
 				type="checkbox"
