@@ -25,10 +25,5 @@ export const postVolunteer = async (data) => {
 };
 
 function alphabeticalBy(property) {
-	return (first, second) => {
-		if (first[property] === second[property]) {
-			return 0;
-		}
-		return first[property] > second[property] ? 1 : -1;
-	};
+	return (first, second) => first[property]?.localeCompare(second[property]);
 }
