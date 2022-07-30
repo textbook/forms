@@ -54,7 +54,6 @@ function App() {
 						onChange={({ field, value }) =>
 							setData((previousData) => ({ ...previousData, [field]: value }))
 						}
-						onSubmit={submitForm}
 					/>
 					<button disabled={loading} type="submit">
 						Submit
