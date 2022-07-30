@@ -33,9 +33,10 @@ function App() {
 			.postVolunteer(data)
 			.catch((err) => {
 				if (err.message === "EMAIL_EXIST") {
-					setErrors({
+					setErrors((existingErrors) => ({
+						...existingErrors,
 						email: "An account with this email address already exists",
-					});
+					}));
 				}
 			})
 			.finally(() => setLoading(false));
@@ -51,7 +52,7 @@ function App() {
 						errors={errors}
 						formDefinition={form}
 						onChange={({ field, value }) =>
-							setData({ ...data, [field]: value })
+							setData((previousData) => ({ ...previousData, [field]: value }))
 						}
 						onSubmit={submitForm}
 					/>
