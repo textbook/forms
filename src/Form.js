@@ -1,8 +1,12 @@
+import Heading from "./Heading";
 import getInput from "./inputs";
 
 function Form({ data, errors, formDefinition, onChange }) {
 	return formDefinition.map(
-		({ choices, field, hidden, label, required, type, ...props }) => {
+		({ choices, field, hidden, label, required, type, ...props }, index) => {
+			if (type === "heading") {
+				return <Heading key={index} label={label} {...props} />;
+			}
 			const Component = getInput(type);
 			const hiddenField =
 				typeof hidden === "function" ? hidden(data) : !!hidden;

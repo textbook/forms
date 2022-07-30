@@ -38,9 +38,21 @@ import * as apiService from "./apiService";
  * @property {Required} required - whether this input is required
  * @property {FieldType} type - which type of control to show
  *
- * @type {Field[]}
+ * @typedef {Object} Heading
+ * @property {string=} description - extra description to show to the user
+ * @property {("before" | "after")=} hr - whether to render an <hr/>
+ * @property {string=} label - the text to show in the heading
+ * @property {"heading"} type - which type of control to show
+ *
+ * @type {(Field | Heading)[]}
  */
 const formDefinition = [
+	{
+		hr: "before",
+		label:
+			"Thank you for your interest! To ensure we’re a great fit, please complete the form below:",
+		type: "heading",
+	},
 	{
 		field: "firstName",
 		label: "Given name",
@@ -60,6 +72,12 @@ const formDefinition = [
 		type: "email",
 	},
 	{
+		field: "tel",
+		label: "Phone number",
+		required: true,
+		type: "tel",
+	},
+	{
 		choices: () => apiService.getCities(),
 		field: "cityId",
 		label: "Which Code Your Future location is near to you?",
@@ -67,10 +85,12 @@ const formDefinition = [
 		type: "select",
 	},
 	{
-		field: "tel",
-		label: "Phone number",
-		required: true,
-		type: "tel",
+		description: [
+			"If you're interested in bringing Code Your Future to your city, email us at",
+			'<a href="mailto:contact@codeyourfuture.io">contact@codeyourfuture.io</a>',
+		].join(" "),
+		hr: "after",
+		type: "heading",
 	},
 	{
 		description: [
@@ -132,6 +152,12 @@ const formDefinition = [
 		type: "select",
 	},
 	{
+		hr: "before",
+		label:
+			"What would you like help Code Your Future with, and what is your level of experience?",
+		type: "heading",
+	},
+	{
 		choices: ["Coaching / Mentoring ", "Help people learn public speaking"],
 		field: "guidePeople",
 		label: "A. Guide people",
@@ -168,6 +194,15 @@ const formDefinition = [
 		field: "otherSkill",
 		label: "C. Help run Code Your Future",
 		type: "skillset",
+	},
+	{
+		description: [
+			"Code Your Future may call you, send you SMS or email you as part of your volunteering process with us.",
+			"Your data is protected in accordance with our privacy policy.",
+		].join(" "),
+		hr: "before",
+		label: "Acknowledgement",
+		type: "heading",
 	},
 	{
 		field: "agreeToTOU",

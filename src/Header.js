@@ -8,10 +8,6 @@ function Header() {
 				<img src={logo} alt="Code Your Future logo" />
 			</header>
 			<h1>Volunteer Application Form</h1>
-			<p>
-				Thank you for your interest! To ensure we’re a great fit, please
-				complete the form below:
-			</p>
 		</>
 	);
 }
