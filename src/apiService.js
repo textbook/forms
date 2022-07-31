@@ -1,4 +1,4 @@
-const API = process.env.REACT_APP_API ?? "";
+const API = window.config?.API_URL ?? "";
 
 export const getCities = async () => {
 	const res = await fetch(`${API}/cities`);

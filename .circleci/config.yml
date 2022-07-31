@@ -30,6 +30,10 @@ jobs:
             - forms-npm-a-{{ checksum "package-lock.json" }}
       - run: npm ci
       - run: npm run e2e
+      - persist_to_workspace:
+          root: .
+          paths:
+            - build
       - store_artifacts:
           path: cypress/videos
       - store_artifacts:
@@ -47,16 +51,16 @@ jobs:
           npm install --location=global gh-pages
           git config user.email 'jonathan@codeyourfuture.io'
           git config user.name 'CircleCI'
+      - attach_workspace:
+          at: .
       - run:
-          command: npm run build
+          command: npm run configure
           environment:
-            BUILD_PATH: "build-qa"
-            PUBLIC_URL: "https://blog.jonrshar.pe/forms"
-            REACT_APP_API: "https://corsproxy.io/?https%3A%2F%2Fcyf-api.qa.codeyourfuture.io"
+            API_URL: "https://corsproxy.io/?https%3A%2F%2Fcyf-api.qa.codeyourfuture.io"
       - add_ssh_keys:
           fingerprints:
             - "ea:b9:9c:d4:75:f7:f5:b9:03:21:48:7e:ad:3b:6b:1b"
-      - run: gh-pages --dist build-qa --message '[skip ci] QA deploy to GitHub repo'
+      - run: gh-pages --dist build --message '[skip ci] QA deploy to GitHub repo'
 
 workflows:
   build:
