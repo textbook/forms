@@ -24,6 +24,9 @@ jobs:
         environment:
           TERM: xterm
     steps:
+      - run: |
+          apt-get update
+          apt-get --yes install gettext
       - checkout
       - restore_cache:
           keys:
@@ -42,6 +45,9 @@ jobs:
     docker:
       - image: cimg/node:16.16.0
     steps:
+      - run: |
+          sudo apt-get update
+          sudo apt-get install gettext
       - checkout
       - restore_cache:
           keys:
