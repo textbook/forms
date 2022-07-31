@@ -49,10 +49,6 @@ jobs:
           sudo apt-get update
           sudo apt-get install gettext
       - checkout
-      - restore_cache:
-          keys:
-            - forms-npm-a-{{ checksum "package-lock.json" }}
-      - run: npm ci
       - run: |
           npm install --location=global gh-pages
           git config user.email 'jonathan@codeyourfuture.io'
