@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "https://blog.jonrshar.pe/forms/static/css/main.0ebc7b8e.css",
-    "main.js": "https://blog.jonrshar.pe/forms/static/js/main.fab1e623.js",
-    "static/js/787.5bd4efce.chunk.js": "https://blog.jonrshar.pe/forms/static/js/787.5bd4efce.chunk.js",
-    "static/media/logo-CYF-square.png": "https://blog.jonrshar.pe/forms/static/media/logo-CYF-square.c6c31591f2e4fcdae35c.png",
-    "index.html": "https://blog.jonrshar.pe/forms/index.html",
-    "main.0ebc7b8e.css.map": "https://blog.jonrshar.pe/forms/static/css/main.0ebc7b8e.css.map",
-    "main.fab1e623.js.map": "https://blog.jonrshar.pe/forms/static/js/main.fab1e623.js.map",
-    "787.5bd4efce.chunk.js.map": "https://blog.jonrshar.pe/forms/static/js/787.5bd4efce.chunk.js.map"
+    "main.css": "./static/css/main.0ebc7b8e.css",
+    "main.js": "./static/js/main.d0c9033d.js",
+    "static/js/787.5bd4efce.chunk.js": "./static/js/787.5bd4efce.chunk.js",
+    "static/media/logo-CYF-square.png": "./static/media/logo-CYF-square.c6c31591f2e4fcdae35c.png",
+    "index.html": "./index.html",
+    "main.0ebc7b8e.css.map": "./static/css/main.0ebc7b8e.css.map",
+    "main.d0c9033d.js.map": "./static/js/main.d0c9033d.js.map",
+    "787.5bd4efce.chunk.js.map": "./static/js/787.5bd4efce.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ebc7b8e.css",
-    "static/js/main.fab1e623.js"
+    "static/js/main.d0c9033d.js"
   ]
 }
