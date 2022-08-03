@@ -75,6 +75,7 @@ describe("user journey", () => {
 			body: { error: "EMAIL_EXIST" },
 			statusCode: 400,
 		}).as("createVolunteer");
+		cy.visit("/");
 
 		cy.findByRole("textbox", { name: /given name/i }).type("John");
 		cy.findByRole("textbox", { name: /family name/i }).type("Doe");
@@ -92,5 +93,19 @@ describe("user journey", () => {
 		cy.findByText("An account with this email address already exists").should(
 			"exist",
 		);
+	});
+
+	it("displays an error but still loads the rest of the form if the cities cannot be fetched", () => {
+		const errorMessage = "Not Found";
+		cy.intercept("GET", `${API}/cities`, {
+			body: errorMessage,
+			statusCode: 404,
+		});
+		cy.visit("/");
+
+		cy.findByRole("combobox", { name: /location/i })
+			.parent()
+			.should("contain.text", errorMessage);
+		cy.findByRole("textbox", { name: /given name/i }).should("exist");
 	});
 });

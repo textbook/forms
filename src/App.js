@@ -8,7 +8,12 @@ import Header from "./Header";
 function App() {
 	const [data, setData] = useState({});
 	const [errors, setErrors] = useState({});
-	const [form, setForm] = useState();
+	const [form, setForm] = useState(
+		formDefinition.map(({ choices, ...field }) => ({
+			...field,
+			choices: typeof choices === "function" ? [] : choices,
+		})),
+	);
 	const [loading, setLoading] = useState(false);
 
 	useEffect(() => {
@@ -17,7 +22,13 @@ function App() {
 				if (typeof field.choices === "function") {
 					return {
 						...field,
-						choices: await field.choices(),
+						choices: await Promise.resolve(field.choices()).catch((err) => {
+							setErrors((previousErrors) => ({
+								...previousErrors,
+								[field.field]: err.message,
+							}));
+							return [];
+						}),
 					};
 				}
 				return field;
