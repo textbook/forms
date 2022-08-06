@@ -34,7 +34,9 @@ describe("API service", () => {
 				}),
 			);
 
-			await expect(apiService.getCities()).rejects.toThrow("Not Found");
+			await expect(apiService.getCities()).rejects.toThrow(
+				"Could not fetch city list",
+			);
 		});
 	});
 

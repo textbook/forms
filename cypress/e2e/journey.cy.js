@@ -96,16 +96,15 @@ describe("user journey", () => {
 	});
 
 	it("displays an error but still loads the rest of the form if the cities cannot be fetched", () => {
-		const errorMessage = "Not Found";
 		cy.intercept("GET", `${API}/cities`, {
-			body: errorMessage,
+			body: "Not Found",
 			statusCode: 404,
 		});
 		cy.visit("/");
 
 		cy.findByRole("combobox", { name: /location/i })
 			.parent()
-			.should("contain.text", errorMessage);
+			.should("contain.text", "Could not fetch city list");
 		cy.findByRole("textbox", { name: /given name/i }).should("exist");
 	});
 });

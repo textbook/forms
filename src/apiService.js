@@ -3,7 +3,7 @@ const API = window.config?.API_URL ?? "";
 export const getCities = async () => {
 	const res = await fetch(`${API}/cities`);
 	if (!res.ok) {
-		throw new Error(res.statusText);
+		throw new Error("Could not fetch city list");
 	}
 	const { cities } = await res.json();
 	return cities
