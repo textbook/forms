@@ -74,7 +74,7 @@
     "eslint-config-cypress": "^0.28.0",
     "husky": "^8.0.1",
     "lint-staged": "^13.0.3",
-    "msw": "^0.44.2",
+    "msw": "^0.45.0",
     "prettier": "^2.7.1",
     "react-scripts": "5.0.1",
     "sass": "^1.54.5",
