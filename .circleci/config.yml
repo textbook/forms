@@ -3,7 +3,7 @@ version: 2.1
 jobs:
   test:
     docker:
-      - image: cimg/node:16.17.0
+      - image: cimg/node:16.16.0
     steps:
       - checkout
       - restore_cache:
@@ -20,7 +20,7 @@ jobs:
       - run: npm run test
   e2e:
     docker:
-      - image: cypress/base:16
+      - image: cypress/base:16.14.0
         environment:
           TERM: xterm
     steps:
@@ -43,7 +43,7 @@ jobs:
           path: cypress/screenshots
   deploy:
     docker:
-      - image: cimg/node:16.17.0
+      - image: cimg/node:16.16.0
     steps:
       - run: |
           sudo apt-get update
