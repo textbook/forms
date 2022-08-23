@@ -67,7 +67,7 @@
     "@testing-library/jest-dom": "^5.16.5",
     "@testing-library/react": "^13.3.0",
     "@testing-library/user-event": "^14.4.3",
-    "@textbook/build-info": "^0.2.5",
+    "@textbook/build-info": "^0.3.0",
     "concurrently": "^7.3.0",
     "cross-env": "^7.0.3",
     "cypress": "^10.6.0",
