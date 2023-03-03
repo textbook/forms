@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "./static/css/main.0ebc7b8e.css",
-    "main.js": "./static/js/main.501db1eb.js",
-    "static/js/787.5bd4efce.chunk.js": "./static/js/787.5bd4efce.chunk.js",
+    "main.js": "./static/js/main.a1e03e68.js",
+    "static/js/496.d83a6841.chunk.js": "./static/js/496.d83a6841.chunk.js",
     "static/media/logo-CYF-square.png": "./static/media/logo-CYF-square.c6c31591f2e4fcdae35c.png",
     "index.html": "./index.html",
     "main.0ebc7b8e.css.map": "./static/css/main.0ebc7b8e.css.map",
-    "main.501db1eb.js.map": "./static/js/main.501db1eb.js.map",
-    "787.5bd4efce.chunk.js.map": "./static/js/787.5bd4efce.chunk.js.map"
+    "main.a1e03e68.js.map": "./static/js/main.a1e03e68.js.map",
+    "496.d83a6841.chunk.js.map": "./static/js/496.d83a6841.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.0ebc7b8e.css",
-    "static/js/main.501db1eb.js"
+    "static/js/main.a1e03e68.js"
   ]
 }
