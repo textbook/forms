@@ -1,6 +1,49 @@
 {
 	"cities": [
 		{
+			"_id": "5cefa67c071d210018e3dccf",
+			"name": "Birmingham",
+			"email": "birmingham@codeyourfuture.io",
+			"slackChannel": "birmingham-applicants",
+			"slackChannelId": "CJSP766DR",
+			"createdAt": "2019-05-30T09:46:36.829Z",
+			"updatedAt": "2023-01-16T13:00:43.476Z",
+			"__v": 0,
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
+			"_id": "5c55976d6a3791001cd3a774",
+			"name": "Rome",
+			"location": "Via Marsala, 29H, 00185 Roma RM, Italy",
+			"email": "italy@codeyourfuture.io",
+			"slackChannel": "Italy",
+			"slackChannelId": "GGWCZDG1K",
+			"__v": 0,
+			"updatedAt": "2023-01-05T19:42:33.047Z",
+			"visibleIn": ["APPLICATION_PROCESS_FORM", "EVENT_LIST", "DASHBOARD"]
+		},
+		{
+			"_id": "5cefa482e9d57c001b2a7710",
+			"name": "Manchester",
+			"email": "manchester@codeyourfuture.io",
+			"slackChannel": "manchester-applicants",
+			"slackChannelId": "CK45JGC85",
+			"createdAt": "2019-05-30T09:38:10.576Z",
+			"updatedAt": "2019-10-31T08:38:59.412Z",
+			"__v": 0,
+			"visibleIn": [
+				"VOLUNTEER_FORM",
+				"APPLICATION_PROCESS_FORM",
+				"EVENT_LIST",
+				"DASHBOARD"
+			]
+		},
+		{
 			"_id": "5c40ba625da199001c70b5fb",
 			"name": "London",
 			"location": "244-254 Cambridge Heath Rd, London E2 9DA",
@@ -17,20 +60,15 @@
 			]
 		},
 		{
-			"_id": "5c55976d6a3791001cd3a774",
-			"name": "Rome",
-			"location": "Via Marsala, 29H, 00185 Roma RM, Italy",
-			"email": "italy@codeyourfuture.io",
-			"slackChannel": "Italy",
-			"slackChannelId": "GGWCZDG1K",
-			"__v": 0,
-			"updatedAt": "2019-10-31T08:38:28.636Z",
-			"visibleIn": [
-				"APPLICATION_PROCESS_FORM",
-				"VOLUNTEER_FORM",
-				"EVENT_LIST",
-				"DASHBOARD"
-			]
+			"_id": "5f775acf569738001b7c8999",
+			"visibleIn": [],
+			"name": "Hebron",
+			"email": "palestine@codeyourfuture.io",
+			"slackChannel": "#palestine",
+			"slackChannelId": "C01BSH73H5K",
+			"createdAt": "2020-10-02T16:52:31.160Z",
+			"updatedAt": "2021-08-05T07:50:41.192Z",
+			"__v": 0
 		},
 		{
 			"_id": "5c7fa02021b123001b68665b",
@@ -54,29 +92,30 @@
 			"slackChannel": "Italy",
 			"slackChannelId": "GGWCZDG1K",
 			"__v": 0,
-			"updatedAt": "2021-08-05T08:31:09.209Z",
-			"visibleIn": [
-				"VOLUNTEER_FORM",
-				"APPLICATION_PROCESS_FORM",
-				"DASHBOARD",
-				"EVENT_LIST"
-			]
+			"updatedAt": "2023-01-05T19:47:06.180Z",
+			"visibleIn": ["APPLICATION_PROCESS_FORM", "DASHBOARD", "EVENT_LIST"]
 		},
 		{
-			"_id": "5cefa482e9d57c001b2a7710",
-			"name": "Manchester",
-			"email": "manchester@codeyourfuture.io",
-			"slackChannel": "manchester-applicants",
-			"slackChannelId": "CK45JGC85",
-			"createdAt": "2019-05-30T09:38:10.576Z",
-			"updatedAt": "2019-10-31T08:38:59.412Z",
+			"_id": "5f775ab7569738001b7c8998",
+			"visibleIn": [],
+			"name": "Gaza",
+			"email": "palestine@codeyourfuture.io",
+			"slackChannel": "#palestine",
+			"slackChannelId": "C01BSH73H5K",
+			"createdAt": "2020-10-02T16:52:07.526Z",
+			"updatedAt": "2021-08-05T07:48:07.543Z",
+			"__v": 0
+		},
+		{
+			"_id": "5cefa6e0071d210018e3dcd0",
+			"name": "Other regions",
+			"email": "applicants@codeyourfuture.io",
+			"slackChannel": "othercities",
+			"slackChannelId": "AAAAA",
+			"createdAt": "2019-05-30T09:48:16.638Z",
+			"updatedAt": "2022-09-02T11:02:08.491Z",
 			"__v": 0,
-			"visibleIn": [
-				"VOLUNTEER_FORM",
-				"APPLICATION_PROCESS_FORM",
-				"EVENT_LIST",
-				"DASHBOARD"
-			]
+			"visibleIn": ["APPLICATION_PROCESS_FORM", "EVENT_LIST", "DASHBOARD"]
 		},
 		{
 			"_id": "5cefa655071d210018e3dcce",
@@ -88,38 +127,6 @@
 			"updatedAt": "2021-08-05T08:29:40.096Z",
 			"__v": 0,
 			"visibleIn": ["DASHBOARD"]
-		},
-		{
-			"_id": "5cefa67c071d210018e3dccf",
-			"name": "Birmingham",
-			"email": "westmidlands@codeyourfuture.io",
-			"slackChannel": "birmingham-applicants",
-			"slackChannelId": "CJSP766DR",
-			"createdAt": "2019-05-30T09:46:36.829Z",
-			"updatedAt": "2020-12-23T12:30:05.435Z",
-			"__v": 0,
-			"visibleIn": [
-				"VOLUNTEER_FORM",
-				"APPLICATION_PROCESS_FORM",
-				"EVENT_LIST",
-				"DASHBOARD"
-			]
-		},
-		{
-			"_id": "5cefa6e0071d210018e3dcd0",
-			"name": "Other",
-			"email": "applicants@codeyourfuture.io",
-			"slackChannel": "othercities",
-			"slackChannelId": "AAAAA",
-			"createdAt": "2019-05-30T09:48:16.638Z",
-			"updatedAt": "2019-10-31T08:38:41.997Z",
-			"__v": 0,
-			"visibleIn": [
-				"VOLUNTEER_FORM",
-				"APPLICATION_PROCESS_FORM",
-				"EVENT_LIST",
-				"DASHBOARD"
-			]
 		},
 		{
 			"_id": "5d444706c43ea6001b03106c",
@@ -138,26 +145,27 @@
 			]
 		},
 		{
-			"_id": "5f775ab7569738001b7c8998",
-			"visibleIn": [],
-			"name": "Gaza",
-			"email": "palestine@codeyourfuture.io",
-			"slackChannel": "#palestine",
-			"slackChannelId": "C01BSH73H5K",
-			"createdAt": "2020-10-02T16:52:07.526Z",
-			"updatedAt": "2021-08-05T07:48:07.543Z",
+			"_id": "6311e3eccc978e62ec70dbee",
+			"visibleIn": ["VOLUNTEER_FORM", "EVENT_LIST", "DASHBOARD"],
+			"name": "Remote",
+			"email": "volunteering@codeyourfuture.io",
+			"slackChannel": "remote",
+			"slackChannelId": "AAAAA",
+			"createdAt": "2022-09-02T11:07:24.290Z",
+			"updatedAt": "2022-09-02T11:07:24.290Z",
 			"__v": 0
 		},
 		{
-			"_id": "5f775acf569738001b7c8999",
-			"visibleIn": [],
-			"name": "Hebron",
-			"email": "palestine@codeyourfuture.io",
-			"slackChannel": "#palestine",
-			"slackChannelId": "C01BSH73H5K",
-			"createdAt": "2020-10-02T16:52:31.160Z",
-			"updatedAt": "2021-08-05T07:50:41.192Z",
+			"_id": "6336eb2d6b13b407aa5eac3d",
+			"visibleIn": ["VOLUNTEER_FORM", "DASHBOARD"],
+			"name": "Leeds",
+			"email": "manchester@codeyourfuture.io",
+			"slackChannel": "manchester-applicants",
+			"slackChannelId": "CK45JGC85",
+			"createdAt": "2022-09-30T13:12:13.045Z",
+			"updatedAt": "2022-09-30T13:12:13.045Z",
 			"__v": 0
 		}
-	]
+	],
+	"cached": false
 }

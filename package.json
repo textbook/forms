@@ -46,6 +46,7 @@
     ],
     "rules": {
       "indent": "off",
+      "no-mixed-spaces-and-tabs": "off",
       "operator-linebreak": "off"
     }
   },

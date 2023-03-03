@@ -2,7 +2,7 @@ const API = Cypress.env("API_URL") ?? "";
 
 describe("user journey", () => {
 	it("can submit data", () => {
-		cy.intercept("GET", `${API}/cities`, {
+		cy.intercept("GET", `${API}/cities?visibleIn=VOLUNTEER_FORM`, {
 			fixture: "cities.json",
 		});
 		cy.intercept("POST", `${API}/volunteer`, {
@@ -48,7 +48,7 @@ describe("user journey", () => {
 	});
 
 	it("employer is not displayed if that isn't how they heard about CYF", () => {
-		cy.intercept("GET", `${API}/cities`, {
+		cy.intercept("GET", `${API}/cities?visibleIn=VOLUNTEER_FORM`, {
 			fixture: "cities.json",
 		});
 		cy.visit("/");
@@ -68,7 +68,7 @@ describe("user journey", () => {
 	});
 
 	it("displays an error if the email already exists", () => {
-		cy.intercept("GET", `${API}/cities`, {
+		cy.intercept("GET", `${API}/cities?visibleIn=VOLUNTEER_FORM`, {
 			fixture: "cities.json",
 		});
 		cy.intercept("POST", `${API}/volunteer`, {
@@ -96,7 +96,7 @@ describe("user journey", () => {
 	});
 
 	it("displays an error but still loads the rest of the form if the cities cannot be fetched", () => {
-		cy.intercept("GET", `${API}/cities`, {
+		cy.intercept("GET", `${API}/cities?visibleIn=VOLUNTEER_FORM`, {
 			body: "Not Found",
 			statusCode: 404,
 		});

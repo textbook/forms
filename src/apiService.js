@@ -1,13 +1,12 @@
 const API = window.config?.API_URL ?? "";
 
 export const getCities = async () => {
-	const res = await fetch(`${API}/cities`);
+	const res = await fetch(`${API}/cities?visibleIn=VOLUNTEER_FORM`);
 	if (!res.ok) {
 		throw new Error("Could not fetch city list");
 	}
 	const { cities } = await res.json();
 	return cities
-		.filter(({ visibleIn }) => visibleIn.includes("VOLUNTEER_FORM"))
 		.map(({ _id, name }) => ({ name, value: _id }))
 		.sort(alphabeticalBy("name"));
 };

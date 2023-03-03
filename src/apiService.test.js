@@ -17,7 +17,14 @@ describe("API service", () => {
 		it("fetches and exposes visible cities in a useful order", async () => {
 			global.server.use(
 				rest.get("/cities", (req, res, ctx) => {
-					return res(ctx.status(200), ctx.json({ cities }));
+					const requestedApps = req.url.searchParams.getAll("visibleIn");
+					const responseCities =
+						requestedApps.length > 0
+							? cities.filter(({ visibleIn }) =>
+									requestedApps.some((app) => visibleIn.includes(app)),
+							  )
+							: cities;
+					return res(ctx.status(200), ctx.json({ cities: responseCities }));
 				}),
 			);
 
