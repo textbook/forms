@@ -16,7 +16,7 @@ describe("App component", () => {
 	it("disables form submit while waiting for response", async () => {
 		global.server.use(
 			rest.post("/volunteer", (req, res, ctx) => {
-				return res(ctx.status(200), ctx.json({ volunteer: {} }));
+				return res(ctx.delay(1), ctx.status(200), ctx.json({ volunteer: {} }));
 			}),
 		);
 		render(<App />);
