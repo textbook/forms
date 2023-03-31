@@ -6,7 +6,10 @@ function FormControl({ children, error, description, label, postfix = false }) {
 			<>
 				<b dangerouslySetInnerHTML={{ __html: label }} />
 				{description && (
-					<span dangerouslySetInnerHTML={{ __html: description }} />
+					<>
+						{" "}
+						<span dangerouslySetInnerHTML={{ __html: description }} />
+					</>
 				)}
 			</>
 		);

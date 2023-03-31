@@ -87,7 +87,7 @@ const formDefinition = [
 	{
 		description: [
 			"If you're interested in bringing Code Your Future to your city, email us at",
-			'<a href="mailto:contact@codeyourfuture.io">contact@codeyourfuture.io</a>',
+			'<a href="mailto:contact@codeyourfuture.io">contact@codeyourfuture.io</a>.',
 		].join(" "),
 		hr: "after",
 		type: "heading",
